@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import { Router, Switch, Route, useHistory, Link, BrowserRouter } from 'react-router-dom';
+import axios from 'axios'
 
 function Homepage() {
   console.log('home');
@@ -24,49 +25,57 @@ function Test() {
   )
 }
 function CreateAccount() {
-  var history = useHistory();
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const createAccount = () => {
-    const user = {'username': username, 'password': password}
-    alert('form');
-    // handle blanks
-    if(username === '' || password === '') {
-      alert('error - please complete form');
-      return
-    }
-    fetch('/create_account', {
-      method:'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+  const history = useHistory();
+  const initialInputs = {
+    username: '',
+    password: ''
+  }
+  const [accountInput, setAccountInput] = useState<{username: string; password: string;}>(initialInputs)
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAccountInput({
+      ...accountInput,
+      [event.currentTarget.name]: event.currentTarget.value
+
     })
-    .then(response => response.json())
-    .then((data) => {
-      alert('account created')
-      history.push('/')
+  }
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    console.log(accountInput)
+    axios.post('http://localhost:8080/create_account', accountInput)
+    .then( (res: any) => {
+        console.log(res.data)
+        history.push('/login') 
     })
+    .catch((err:any) => {
+        console.log(err.message, err.name)
+    })
+    // reset
+    setAccountInput(initialInputs)
 
   }
   
   return(
-    <div>
-      <form>
-        <title>Create Account</title>
-        <label>
-          Username:
-          <input type="text" placeholder="Username" onChange={(e) =>setUsername(e.target.value)}></input>
-        </label>
-        <label>
-          Password:
-          <input type="password" placeholder="Password" onChange={(e) =>setPassword(e.target.value)}></input>
-        </label>
-        <input type="submit" onClick={createAccount}></input>
-      </form>
-      
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>Username
+        <input
+          type='text'
+          name='username'
+          value={accountInput.username}
+          onChange={handleInput} 
+        />
+      </label>
+      <label>Password
+        <input
+          type='password'
+          name='password'
+          value={accountInput.password}
+          onChange={handleInput} 
+        />
+      </label>
+      <button>Create Account</button>
+
+
+    </form>
   )
 }
 

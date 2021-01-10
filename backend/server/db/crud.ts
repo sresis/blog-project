@@ -3,12 +3,19 @@ import { User } from "./dbModel";
 var model = require('./dbModel');
 
 
+
 // create user account
 function createAccount(username: string, password: string) {
     const user = User.create({username: username, password: password});
     console.log(user.username)
 }
 
+// get users
+function getUsers() {
+    return User.findAll();
+}
+
 export {
-    createAccount
+    createAccount,
+    getUsers
 }
