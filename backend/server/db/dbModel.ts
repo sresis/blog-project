@@ -1,14 +1,17 @@
 
+"use strict";
 const { Sequelize, DataTypes } = require('sequelize-typescript');
 require('dotenv').config();
 
 
 const sequelize = new Sequelize(
-    'blogdb', 'root', 'password', 
+    'blog', 'stephanieresis', '', 
     {
     host: 'localhost',
     dialect: 'postgres',
-    logging: false
+    // logging: false
+    sync: true 
+
     },
 )
 
@@ -24,7 +27,7 @@ sequelize
   });
 
 // user class
-const User = sequelize.define('User', {
+const Users = sequelize.define('Users', {
     id:  { 
         type: Sequelize.INTEGER, 
         autoIncrement: true, 
@@ -40,9 +43,9 @@ const User = sequelize.define('User', {
     }
 }, {
     sequelize,
-    modelName: 'User'
+    modelName: 'Users'
 });
-User.sync({ alter: true})
+Users.sync({ alter: false})
 
 // post class
 const Post = sequelize.define('Post', {
@@ -62,7 +65,9 @@ const Post = sequelize.define('Post', {
     sequelize,
     modelName: 'Post'
 });
-User.sync({ alter: true})
+console.log(Users === sequelize.models.Users);
+
+Post.sync({ alter: false})
 export {
-    User, Post, sequelize
+    Users, Post, sequelize
 }

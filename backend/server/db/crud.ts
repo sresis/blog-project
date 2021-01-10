@@ -1,18 +1,17 @@
 import { Model, Sequelize } from "sequelize/types";
-import { User } from "./dbModel";
+import { Users } from "./dbModel";
 var model = require('./dbModel');
-
 
 
 // create user account
 function createAccount(username: string, password: string) {
-    const user = User.create({username: username, password: password});
-    console.log(user.username)
+    const user = model.Users.create({ username: username, password: password });
+    console.log("User's auto-generated ID", user.id )
 }
 
 // get users
 function getUsers() {
-    return User.findAll();
+    return Users.findAll();
 }
 
 export {

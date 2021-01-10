@@ -25,7 +25,7 @@ app.post('/create_account', (req: express.Request, res: express.Response) => {
   // insert function to create user account
   // handle if blanks
   // handle if already regsistered
-  //crud.createAccount(username, password)
+  crud.createAccount(username, password)
   res.json({ message: 'success.' });
 
 })
