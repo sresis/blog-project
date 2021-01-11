@@ -12,13 +12,12 @@ function ViewFavorites () {
     }
     return (
         <div>
-            hiiii
             <button onClick={fetchData}>view it</button>
-            <div className="posts">
+            <div className="favorites">
                 {favorites &&
                 favorites.map((favorite:any, index) => {
                 return (
-                <div className="post" key={index}>
+                <div className="post" key={favorite.id}>
                     <h2>{favorite.Post.postTitle}</h2>
                     <div className="details">
                     <p>{favorite.Post.postContent}</p>

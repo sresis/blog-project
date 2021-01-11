@@ -10,7 +10,8 @@ function ViewPosts () {
             setVisiblePosts(res.data);   
         })
     }
-  
+
+    
     return (
         <div>
             hiiii
@@ -18,12 +19,13 @@ function ViewPosts () {
             <div className="posts">
                 {visiblePosts &&
                 visiblePosts.map((visiblePost:any, index) => {
+                    console.log(visiblePost);
                 return (
                 <div className="post" key={index}>
                     <h2>{visiblePost.postTitle}</h2>
                     <div className="details">
                     <p>{visiblePost.postContent}</p>
-                    <button onClick={CreateFavorite}>Create Fav</button>
+                    <button onClick={() => CreateFavorite(`${visiblePost.id}`)}>Create Fav</button>
                     </div>
                 </div>
                 );

@@ -99,10 +99,11 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     })
   })
   // creates a favorite post
-  app.post('/create_favorite', (req: express.Request, res: express.Response) => {
-    const postID = 1;
+  app.post('/create_favorite/:id', (req: any, res: express.Response) => {
+    
     const userID = session['current']
-    favorite.createFavorite(userID, postID)
+    console.log(req.params['ID'])
+    favorite.createFavorite(userID, req.params['id'])
     console.log('created fav');
     
     res.json({ message: 'success.' });

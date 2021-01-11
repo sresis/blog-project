@@ -26,7 +26,7 @@ function showUserPosts(userID: number) {
 function showAllPosts() {
     // make instance then make array of it
     return Posts.findAll({
-        attributes: ['postTitle', 'postContent', 'postDate', 'userID']
+        attributes: ['postTitle', 'postContent', 'postDate', 'userID', 'id']
       })
 
  
