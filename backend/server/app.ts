@@ -27,6 +27,15 @@ app.post('/create_account', (req: express.Request, res: express.Response) => {
   user.createAccount(username, password)
   res.json({ message: 'success.' });
 })
+app.post('/create_post', (req: express.Request, res: express.Response) => {
+  console.log('********');
+  const {postTitle, postContent, postDate, userID} = req.body
+  post.createPost(postTitle, postContent, postDate, userID)
+  // insert function to create user account
+  // handle if blanks
+  // handle if already regsistered
+  res.json({ message: 'success.' });
+})
 
 // login user
 app.post('/login', (req: express.Request, res: express.Response) => {
@@ -48,14 +57,7 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     }
   })
 
-  app.post('/create_post', (req: express.Request, res: express.Response) => {
-    const {postTitle, postContent, postDate, userID} = req.body
-    console.log('xx')
-    // insert function to create user account
-    // handle if blanks
-    // handle if already regsistered
-    res.json({ message: 'success.' });
-  })
+  
 })
 
 function logger (req: Request, res: Response, next: express.NextFunction) {

@@ -52,15 +52,15 @@ Users.sync({ alter: true})
 
 // Posts class
 const Posts = sequelize.define('Posts', {
-    PostTitle: {
+    postTitle: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    PostContent: {
+    postContent: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    PostDate: {
+    postDate: {
         type: Sequelize.STRING,
         allowNull: true
     },
