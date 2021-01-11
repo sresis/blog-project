@@ -28,8 +28,8 @@ app.post('/create_account', (req: express.Request, res: express.Response) => {
   res.json({ message: 'success.' });
 })
 app.post('/create_post', (req: express.Request, res: express.Response) => {
-  console.log('********');
-  const {postTitle, postContent, postDate, userID} = req.body
+  const {postTitle, postContent, postDate} = req.body
+  const userID = session['current']
   post.createPost(postTitle, postContent, postDate, userID)
   // insert function to create user account
   // handle if blanks
