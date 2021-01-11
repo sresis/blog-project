@@ -5,15 +5,20 @@ var model = require('./dbModel');
 
 // create user account
 function createAccount(username: string, password: string) {
+    // need to add validation to account for duplicate users?
     const user = model.Users.create({ username: username, password: password });
 }
 
-// get users
-function getUsers() {
-    return Users.findAll();
+// get user by username
+function getUserByUsername(username: string) {
+    return Users.findAll({
+        where: {
+            username: username
+        }
+    });
 }
 
 export {
     createAccount,
-    getUsers
+    getUserByUsername
 }

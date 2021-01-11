@@ -18,11 +18,9 @@ function CreateAccount() {
     }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      console.log(accountInput)
       axios.post('http://localhost:8080/create_account', accountInput)
       .then((res: any) => {
-          console.log(res.data)
-          history.push('/login') 
+          history.push('/') 
       })
       .catch((err:any) => {
           console.log(err.message, err.name)

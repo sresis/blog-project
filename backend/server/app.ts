@@ -1,4 +1,5 @@
 import * as express from 'express';
+import { Users } from './db/dbModel';
 var session = require('express-session');
 var crud = require('./db/crud')
 var createError = require('http-errors');
@@ -18,23 +19,34 @@ app.get('/', (req, res) => {
 
 // create user account
 app.post('/create_account', (req: express.Request, res: express.Response) => {
-  console.log('test12');
-  console.log(req.body);
   const {username, password} = req.body
-  console.log(username);
   // insert function to create user account
   // handle if blanks
   // handle if already regsistered
   crud.createAccount(username, password)
   res.json({ message: 'success.' });
-
 })
-app.get('/test', (req, res) => {
-    //crud.createAccount('ccc', 'ddd')
-    res.json({ message: 'good day' });
 
+// login user
+app.post('/login', (req: express.Request, res: express.Response) => {
+  const {username, password} = req.body
+  const users = crud.getUserByUsername(username).then(function (users: Array<typeof Users>) {
+    // check if username is in DB
+    if (users.length === 0) {
+      res.json({'error': 'User not registered'})
+    }
+    else if (users[0].password !== password) {
+      res.json({'error': 'Incorrect password'})
+    }
+    // otherwise, create session and log them in
+    else {
+      session['current'] = users[0].id
+      console.log('logged in');
+      res.json({'success': username})
 
-  });
+    }
+  })
+})
 
 function logger (req: Request, res: Response, next: express.NextFunction) {
   console.log(`a ${req.method} was made to ${req.url} with status: ${res.status}`)
