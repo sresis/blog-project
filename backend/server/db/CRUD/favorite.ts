@@ -13,7 +13,8 @@ function viewUserFavorites(userID: number) {
     return Favorites.findAll({
         where: {
             userID: userID
-        }
+        },
+        include: [Users, Posts]
     })
 }
 

@@ -7,7 +7,7 @@ function ViewFavorites () {
     const fetchData = () => {
         const response = axios.get('http://localhost:8080/show_favorites')
         .then((res: any) => {
-            setFavorites(res.data);   
+            setFavorites(res.data);
         })
     }
     return (
@@ -19,9 +19,9 @@ function ViewFavorites () {
                 favorites.map((favorite:any, index) => {
                 return (
                 <div className="post" key={index}>
-                    <h2>{favorite.postID}</h2>
+                    <h2>{favorite.Post.postTitle}</h2>
                     <div className="details">
-                    <p>{favorite.userID}</p>
+                    <p>{favorite.Post.postContent}</p>
                     </div>
                 </div>
                 );
