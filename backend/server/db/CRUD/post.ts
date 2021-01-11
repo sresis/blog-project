@@ -12,7 +12,14 @@ function createPost(postTitle: string, postContent: string, postDate: string, us
                             userID: userID
                             });
 }
-function updatePost() {
+// update the post content
+function updatePost(id: number, postContent: string) {
+    Posts.update(
+        {postContent: postContent},
+        {returning: true, where: {id: id} }
+      )
+     
+
 
 }
 // show all posts made by current user

@@ -1,6 +1,8 @@
 import React, {useState } from 'react';
 import axios from 'axios'
 import DeletePost  from './DeletePost'
+import UpdatePost  from './UpdatePost'
+
 function ViewUserPosts () {
     const [visiblePosts, setVisiblePosts] = useState(Array);
     const fetchData = () => {
@@ -21,6 +23,7 @@ function ViewUserPosts () {
                     <div className="details">
                     <p>{visiblePost.postContent}</p>
                     <button onClick={() => DeletePost(`${visiblePost.id}`)}>Delete post</button>
+                    <button onClick={() => UpdatePost(`${visiblePost.id}`)}>Update post</button>
                     </div>
                 </div>
                 );

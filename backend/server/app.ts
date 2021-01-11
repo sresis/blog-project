@@ -109,6 +109,10 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     post.deletePost(req.params['id'])
     res.json({'message': 'success'});
   })
+  app.post('/update_post/:id', (req: any, res: express.Response)=> {
+    post.updatePost(14, 'udpated content here')
+    res.json({'message': 'success'})
+  })
 })
 
 function logger (req: Request, res: Response, next: express.NextFunction) {
