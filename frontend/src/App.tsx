@@ -7,6 +7,8 @@ import Logout from './Components/Logout'
 import CreatePost from './Components/CreatePost'
 import ViewPosts from './Components/ViewPosts'
 import ViewUserPosts from './Components/ViewUserPosts'
+import CreateFavorite from './Components/CreateFavorite'
+
 
 
 function Homepage() {
@@ -29,6 +31,9 @@ function Homepage() {
   }
   const viewUserPosts = (e:any) => {
     history.push('/view-user-posts')
+  }
+  const createFavorite = (e:any) => {
+    history.push('/create-favorite')
   }
   return (
     <div>

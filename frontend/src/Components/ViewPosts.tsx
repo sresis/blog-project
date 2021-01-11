@@ -1,6 +1,7 @@
 import React, {useState } from 'react';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import CreateFavorite  from './CreateFavorite'
 function ViewPosts () {
     const [visiblePosts, setVisiblePosts] = useState(Array);
     const fetchData = () => {
@@ -22,13 +23,11 @@ function ViewPosts () {
                     <h2>{visiblePost.postTitle}</h2>
                     <div className="details">
                     <p>{visiblePost.postContent}</p>
+                    <button onClick={CreateFavorite}>Create Fav</button>
                     </div>
                 </div>
                 );
             })}
-
-
-
             </div>
             
         </div>

@@ -1,16 +1,17 @@
 import * as express from 'express';
-import { Users, Posts } from './db/dbModel';
-var session = require('express-session');
-var user = require('./db/CRUD/user');
-var post = require('./db/CRUD/post');
-var createError = require('http-errors');
-var cors = require('cors')
+import { Users, Posts, Favorites } from './db/dbModel';
+let session = require('express-session');
+const user = require('./db/CRUD/user');
+const post = require('./db/CRUD/post');
+const favorite = require('./db/CRUD/favorite');
+const createError = require('http-errors');
+const cors = require('cors')
 const port = 8080;
 require('dotenv').config();
 const app = express();
 app.use(cors()) // prevent cors error
 const bodyParser = require('body-parser')
-var Sequelize = require('sequelize-values')();
+const Sequelize = require('sequelize-values')();
 
 app.use(bodyParser.json()) // for parsing json
  
@@ -55,7 +56,6 @@ app.post('/login', (req: express.Request, res: express.Response) => {
       session['current'] = users[0].id
       console.log('logged in');
       res.json({'success': username})
-
     }
   })
   // log out user
@@ -86,6 +86,15 @@ app.post('/login', (req: express.Request, res: express.Response) => {
       }
       res.json(postData)
     })
+  })
+  // creates a favorite post
+  app.post('/create_favorite', (req: express.Request, res: express.Response) => {
+    const postID = 1;
+    const userID = session['current']
+    favorite.createFavorite(userID, postID)
+    console.log('created fav');
+    
+    res.json({ message: 'success.' });
   })
 
   
