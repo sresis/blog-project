@@ -15,12 +15,21 @@ function createPost(postTitle: string, postContent: string, postDate: string, us
 function updatePost() {
 
 }
+// show all posts made by current user
+function showUserPosts(userID: number) {
+    return Posts.findAll({
+        where: {
+            userID: userID
+        }
+    })
+}
 function showAllPosts() {
     // make instance then make array of it
     return Posts.findAll({
         attributes: ['postTitle', 'postContent', 'postDate', 'userID']
       })
+
  
 
 }
-export { createPost, updatePost, showAllPosts }
+export { createPost, updatePost, showAllPosts, showUserPosts }

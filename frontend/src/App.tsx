@@ -6,6 +6,8 @@ import Login from './Components/Login'
 import Logout from './Components/Logout'
 import CreatePost from './Components/CreatePost'
 import ViewPosts from './Components/ViewPosts'
+import ViewUserPosts from './Components/ViewUserPosts'
+
 
 function Homepage() {
   console.log('home');
@@ -25,6 +27,9 @@ function Homepage() {
   const viewPosts = (e:any) => {
     history.push('/view-posts')
   }
+  const viewUserPosts = (e:any) => {
+    history.push('/view-user-posts')
+  }
   return (
     <div>
       hello
@@ -34,6 +39,7 @@ function Homepage() {
       <button onClick={logout}>logout</button>
       <div>
         <button onClick={viewPosts}>View posts</button>
+        <button onClick={viewUserPosts}>View your posts</button>
 
       </div>
     </div>
@@ -60,6 +66,7 @@ function App() {
         <Route path="/create-post" component={CreatePost}/>
         <Route path="/logout/" component={Logout}/>
         <Route path="/view-posts/" component={ViewPosts}/>
+        <Route path="/view-user-posts" component={ViewUserPosts}/>
 
 
         <Route path="/" component={Homepage}/>

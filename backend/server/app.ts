@@ -70,10 +70,21 @@ app.post('/login', (req: express.Request, res: express.Response) => {
       for (const item of posts) {
         postData.push(item.dataValues);
         console.log(postData);
-
       }
       res.json(postData)
 
+    })
+  })
+  // show all the posts that the user has made
+  app.get('/show_user_posts', (req, res) => {
+    let postData = [];
+    const userID:number = session['current']
+    const posts = post.showUserPosts(userID).then(function (posts: Array<typeof Posts>) {
+      for (const item of posts) {
+        postData.push(item.dataValues);
+        console.log(postData);
+      }
+      res.json(postData)
     })
   })
 
