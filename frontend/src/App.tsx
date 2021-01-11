@@ -7,7 +7,7 @@ import Logout from './Components/Logout'
 import CreatePost from './Components/CreatePost'
 import ViewPosts from './Components/ViewPosts'
 import ViewUserPosts from './Components/ViewUserPosts'
-import CreateFavorite from './Components/CreateFavorite'
+import ViewFavorites from './Components/ViewFavorites'
 
 
 
@@ -32,9 +32,10 @@ function Homepage() {
   const viewUserPosts = (e:any) => {
     history.push('/view-user-posts')
   }
-  const createFavorite = (e:any) => {
-    history.push('/create-favorite')
+  const viewFavorites = (e:any) => {
+    history.push('/view-favorites')
   }
+ 
   return (
     <div>
       hello
@@ -45,6 +46,7 @@ function Homepage() {
       <div>
         <button onClick={viewPosts}>View posts</button>
         <button onClick={viewUserPosts}>View your posts</button>
+        <button onClick={viewFavorites}>View your favs</button>
 
       </div>
     </div>
@@ -72,6 +74,7 @@ function App() {
         <Route path="/logout/" component={Logout}/>
         <Route path="/view-posts/" component={ViewPosts}/>
         <Route path="/view-user-posts" component={ViewUserPosts}/>
+        <Route path="/view-favorites" component={ViewFavorites}/>
 
 
         <Route path="/" component={Homepage}/>

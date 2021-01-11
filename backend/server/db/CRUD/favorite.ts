@@ -8,8 +8,16 @@ function createFavorite(userID: number, postID: number) {
                             postID: postID
                             });
 }
+//
+function viewUserFavorites(userID: number) {
+    return Favorites.findAll({
+        where: {
+            userID: userID
+        }
+    })
+}
 
 
 export {
-    createFavorite
+    createFavorite, viewUserFavorites
 }

@@ -15,8 +15,6 @@ const Sequelize = require('sequelize-values')();
 
 app.use(bodyParser.json()) // for parsing json
  
-
-
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to my app.' });
   });
@@ -87,6 +85,19 @@ app.post('/login', (req: express.Request, res: express.Response) => {
       res.json(postData)
     })
   })
+  // shows user's favorites
+  app.get('/show_favorites', (req, res) => {
+    let favoriteData = [];
+    const userID: number = session['current']
+    const favorites = favorite.viewUserFavorites(userID).then(function (favorites: Array<typeof Favorites>) {
+      for (const item of favorites) {
+        favoriteData.push(item.dataValues);
+        console.log(favoriteData);
+      }
+      res.json(favoriteData)
+
+    })
+  })
   // creates a favorite post
   app.post('/create_favorite', (req: express.Request, res: express.Response) => {
     const postID = 1;
@@ -96,8 +107,6 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     
     res.json({ message: 'success.' });
   })
-
-  
 })
 
 function logger (req: Request, res: Response, next: express.NextFunction) {
