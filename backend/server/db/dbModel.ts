@@ -71,16 +71,53 @@ const Posts = sequelize.define('Posts', {
     sequelize,
     modelName: 'Posts'
 });
-
 Posts.sync({ alter: true})
+
+// Favorites class
+const Favorites = sequelize.define('Favorites', {
+    postID: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    userID: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
+}, {
+    sequelize,
+    modelName: 'Favorites'
+});
+
+Favorites.sync({ alter: true})
+
+// relations
+// 1 User : Many Posts
 Users.hasMany(Posts, {
     foreignKey: 'userID',
     sourceKey: 'id'
 });
-// relations
 Posts.belongsTo(Users, {foreignKey: 'userID',
 targetKey: 'id'})
 sequelize.sync();
+// 1 User: Many Favorites
+Users.hasMany(Favorites, {
+    foreignKey: 'userID',
+    sourceKey: 'id'
+});
+Favorites.belongsTo(Users, {foreignKey: 'userID',
+targetKey: 'id'})
+sequelize.sync();
+// 1 Post: Many Favorites
+Posts.hasMany(Favorites, {
+    foreignKey: 'postID',
+    sourceKey: 'id'
+});
+Favorites.belongsTo(Posts, {foreignKey: 'postID',
+targetKey: 'id'})
+sequelize.sync();
+
+
+
 export {
-    Users, Posts, sequelize
+    Users, Posts, Favorites, sequelize
 }
