@@ -56,6 +56,11 @@ app.post('/login', (req: express.Request, res: express.Response) => {
 
     }
   })
+  // log out user
+  app.get('/logout', (req, res) => {
+    session['current'] = null;
+
+  })
 
   
 })

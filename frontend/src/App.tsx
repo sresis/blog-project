@@ -3,6 +3,7 @@ import { Router, Switch, Route, useHistory, Link, BrowserRouter } from 'react-ro
 
 import CreateAccount from './Components/CreateAccount'
 import Login from './Components/Login'
+import Logout from './Components/Logout'
 import CreatePost from './Components/CreatePost'
 
 function Homepage() {
@@ -17,12 +18,16 @@ function Homepage() {
   const createPost = (e:any) => {
     history.push('/create-post')
   }
+  const logout = (e:any) => {
+    history.push('/logout')
+  }
   return (
     <div>
       hello
       <button onClick={createNewUser}>make an account</button>
       <button onClick={login}>login</button>
-      <button onClick={createPost}>createPost</button>
+      <button onClick={createPost}>create Post</button>
+      <button onClick={logout}>logout</button>
     </div>
   )
 }
@@ -45,6 +50,7 @@ function App() {
         <Route path="/create-account" component={CreateAccount}/>
         <Route path="/login" component={Login}/>
         <Route path="/create-post/" component={CreatePost}/>
+        <Route path="/logout/" component={Logout}/>
         <Route path="/" component={Homepage}/>
        
       </Switch>
