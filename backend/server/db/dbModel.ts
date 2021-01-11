@@ -1,5 +1,8 @@
 
-"use strict";
+"use strict"
+
+import { SequelizeScopeError } from "sequelize/types";
+
 const { Sequelize, DataTypes } = require('sequelize-typescript');
 require('dotenv').config();
 
@@ -45,7 +48,7 @@ const Users = sequelize.define('Users', {
     sequelize,
     modelName: 'Users'
 });
-Users.sync({ alter: false})
+Users.sync({ alter: true})
 
 // post class
 const Post = sequelize.define('Post', {
@@ -61,13 +64,23 @@ const Post = sequelize.define('Post', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    userID: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
 }, {
     sequelize,
     modelName: 'Post'
 });
-console.log(Users === sequelize.models.Users);
 
-Post.sync({ alter: false})
+Post.sync({ alter: true})
+Users.hasMany(Post, {
+    foreignKey: 'userID',
+    sourceKey: 'id'
+});
+Post.belongsTo(Users, {foreignKey: 'userID',
+targetKey: 'id'})
+sequelize.sync();
 export {
     Users, Post, sequelize
 }
