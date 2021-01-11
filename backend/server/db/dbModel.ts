@@ -1,4 +1,3 @@
-
 "use strict"
 
 import { SequelizeScopeError } from "sequelize/types";

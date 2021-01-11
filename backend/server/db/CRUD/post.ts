@@ -1,5 +1,6 @@
 import { Users, Posts } from "../dbModel";
 var model = require('../dbModel');
+const { Sequelize, DataTypes } = require('sequelize-typescript');
 
 // create post
 // only show option to post if logged in
@@ -15,7 +16,11 @@ function updatePost() {
 
 }
 function showAllPosts() {
-    return Posts.findAll();
+    // make instance then make array of it
+    return Posts.findAll({
+        attributes: ['postTitle', 'postContent', 'postDate', 'userID']
+      })
+ 
 
 }
 export { createPost, updatePost, showAllPosts }

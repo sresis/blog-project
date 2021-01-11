@@ -5,6 +5,7 @@ import CreateAccount from './Components/CreateAccount'
 import Login from './Components/Login'
 import Logout from './Components/Logout'
 import CreatePost from './Components/CreatePost'
+import ViewPosts from './Components/ViewPosts'
 
 function Homepage() {
   console.log('home');
@@ -21,6 +22,9 @@ function Homepage() {
   const logout = (e:any) => {
     history.push('/logout')
   }
+  const viewPosts = (e:any) => {
+    history.push('/view-posts')
+  }
   return (
     <div>
       hello
@@ -28,6 +32,10 @@ function Homepage() {
       <button onClick={login}>login</button>
       <button onClick={createPost}>create Post</button>
       <button onClick={logout}>logout</button>
+      <div>
+        <button onClick={viewPosts}>View posts</button>
+
+      </div>
     </div>
   )
 }
@@ -49,8 +57,11 @@ function App() {
         <Route path="/test" component={Test}/>
         <Route path="/create-account" component={CreateAccount}/>
         <Route path="/login" component={Login}/>
-        <Route path="/create-post/" component={CreatePost}/>
+        <Route path="/create-post" component={CreatePost}/>
         <Route path="/logout/" component={Logout}/>
+        <Route path="/view-posts/" component={ViewPosts}/>
+
+
         <Route path="/" component={Homepage}/>
        
       </Switch>

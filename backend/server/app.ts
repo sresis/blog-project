@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Users } from './db/dbModel';
+import { Users, Posts } from './db/dbModel';
 var session = require('express-session');
 var user = require('./db/CRUD/user');
 var post = require('./db/CRUD/post');
@@ -10,6 +10,8 @@ require('dotenv').config();
 const app = express();
 app.use(cors()) // prevent cors error
 const bodyParser = require('body-parser')
+var Sequelize = require('sequelize-values')();
+
 app.use(bodyParser.json()) // for parsing json
  
 
@@ -59,7 +61,20 @@ app.post('/login', (req: express.Request, res: express.Response) => {
   // log out user
   app.get('/logout', (req, res) => {
     session['current'] = null;
+    res.json({'success': 'logout'})
 
+  })
+  app.get('/show_posts', (req, res) => {
+    let postData = [];
+    const posts = post.showAllPosts().then(function (posts: Array<typeof Posts>) {
+      for (const item of posts) {
+        postData.push(item.dataValues);
+        console.log(postData);
+
+      }
+      res.json(postData)
+
+    })
   })
 
   
