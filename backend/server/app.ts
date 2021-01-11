@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { Users } from './db/dbModel';
 var session = require('express-session');
-var crud = require('./db/crud')
+var user = require('./db/CRUD/userCRUD');
 var createError = require('http-errors');
 var cors = require('cors')
 const port = 8080;
@@ -23,14 +23,14 @@ app.post('/create_account', (req: express.Request, res: express.Response) => {
   // insert function to create user account
   // handle if blanks
   // handle if already regsistered
-  crud.createAccount(username, password)
+  user.createAccount(username, password)
   res.json({ message: 'success.' });
 })
 
 // login user
 app.post('/login', (req: express.Request, res: express.Response) => {
   const {username, password} = req.body
-  const users = crud.getUserByUsername(username).then(function (users: Array<typeof Users>) {
+  const users = user.getUserByUsername(username).then(function (users: Array<typeof Users>) {
     // check if username is in DB
     if (users.length === 0) {
       res.json({'error': 'User not registered'})

@@ -1,6 +1,6 @@
 import { Model, Sequelize } from "sequelize/types";
-import { Users } from "./dbModel";
-var model = require('./dbModel');
+import { Users } from "../dbModel";
+var model = require('../dbModel');
 
 
 // create user account

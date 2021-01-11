@@ -50,17 +50,17 @@ const Users = sequelize.define('Users', {
 });
 Users.sync({ alter: true})
 
-// post class
-const Post = sequelize.define('Post', {
-    postTitle: {
+// Posts class
+const Posts = sequelize.define('Posts', {
+    PostTitle: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    postContent: {
+    PostContent: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    postDate: {
+    PostDate: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -70,17 +70,18 @@ const Post = sequelize.define('Post', {
     }
 }, {
     sequelize,
-    modelName: 'Post'
+    modelName: 'Posts'
 });
 
-Post.sync({ alter: true})
-Users.hasMany(Post, {
+Posts.sync({ alter: true})
+Users.hasMany(Posts, {
     foreignKey: 'userID',
     sourceKey: 'id'
 });
-Post.belongsTo(Users, {foreignKey: 'userID',
+// relations
+Posts.belongsTo(Users, {foreignKey: 'userID',
 targetKey: 'id'})
 sequelize.sync();
 export {
-    Users, Post, sequelize
+    Users, Posts, sequelize
 }
