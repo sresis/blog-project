@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 import axios from 'axios'
-import { useHistory } from 'react-router-dom';
+import DeletePost  from './DeletePost'
 function ViewUserPosts () {
     const [visiblePosts, setVisiblePosts] = useState(Array);
     const fetchData = () => {
@@ -20,6 +20,7 @@ function ViewUserPosts () {
                     <h2>{visiblePost.postTitle}</h2>
                     <div className="details">
                     <p>{visiblePost.postContent}</p>
+                    <button onClick={() => DeletePost(`${visiblePost.id}`)}>Delete post</button>
                     </div>
                 </div>
                 );

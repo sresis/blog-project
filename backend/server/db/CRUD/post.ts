@@ -23,13 +23,19 @@ function showUserPosts(userID: number) {
         }
     })
 }
+// delete a post
+function deletePost(id: number) {
+    Posts.destroy({
+        where: {
+            id: id
+        }
+    })
+}
+// show details on all posts
 function showAllPosts() {
-    // make instance then make array of it
     return Posts.findAll({
         attributes: ['postTitle', 'postContent', 'postDate', 'userID', 'id']
       })
 
- 
-
 }
-export { createPost, updatePost, showAllPosts, showUserPosts }
+export { createPost, updatePost, showAllPosts, showUserPosts, deletePost }

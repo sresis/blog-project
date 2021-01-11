@@ -110,13 +110,12 @@ sequelize.sync();
 // 1 Post: Many Favorites
 Posts.hasMany(Favorites, {
     foreignKey: 'postID',
-    sourceKey: 'id'
+    sourceKey: 'id',
+    onDelete: 'cascade' // handle cascading deletes
 });
 Favorites.belongsTo(Posts, {foreignKey: 'postID',
 targetKey: 'id'})
 sequelize.sync();
-
-
 
 export {
     Users, Posts, Favorites, sequelize

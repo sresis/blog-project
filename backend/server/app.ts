@@ -100,13 +100,14 @@ app.post('/login', (req: express.Request, res: express.Response) => {
   })
   // creates a favorite post
   app.post('/create_favorite/:id', (req: any, res: express.Response) => {
-    
     const userID = session['current']
-    console.log(req.params['ID'])
-    favorite.createFavorite(userID, req.params['id'])
-    console.log('created fav');
-    
+    favorite.createFavorite(userID, req.params['id'])    
     res.json({ message: 'success.' });
+  })
+  // deletes a post
+  app.post('/delete_post/:id', (req: any, res: express.Response) => {
+    post.deletePost(req.params['id'])
+    res.json({'message': 'success'});
   })
 })
 
