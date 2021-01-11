@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
     {
     host: 'localhost',
     dialect: 'postgres',
-    // logging: false
+    logging: false,
     sync: true 
 
     },
@@ -62,7 +62,7 @@ const Posts = sequelize.define('Posts', {
     },
     PostDate: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     userID: {
         type: Sequelize.INTEGER,

@@ -1,7 +1,8 @@
 import * as express from 'express';
 import { Users } from './db/dbModel';
 var session = require('express-session');
-var user = require('./db/CRUD/userCRUD');
+var user = require('./db/CRUD/user');
+var post = require('./db/CRUD/post');
 var createError = require('http-errors');
 var cors = require('cors')
 const port = 8080;
@@ -45,6 +46,15 @@ app.post('/login', (req: express.Request, res: express.Response) => {
       res.json({'success': username})
 
     }
+  })
+
+  app.post('/create_post', (req: express.Request, res: express.Response) => {
+    const {postTitle, postContent, postDate, userID} = req.body
+    console.log('xx')
+    // insert function to create user account
+    // handle if blanks
+    // handle if already regsistered
+    res.json({ message: 'success.' });
   })
 })
 
