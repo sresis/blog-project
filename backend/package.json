@@ -27,8 +27,7 @@
     "postgresql": "0.0.1",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.22.3",
-    "sequelize-typescript": "^1.1.0",
-    "sequelize-values": "^1.1.0"
+    "sequelize-typescript": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "^8.10.66",

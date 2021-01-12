@@ -9,7 +9,7 @@ import ViewPosts from './Components/ViewPosts'
 import ViewUserPosts from './Components/ViewUserPosts'
 import ViewFavorites from './Components/ViewFavorites'
 import UpdatePost from './Components/UpdatePost'
-
+import SearchByTitle from './Components/SearchByTitle'
 
 function Homepage() {
   console.log('home');
@@ -35,6 +35,9 @@ function Homepage() {
   const viewFavorites = (e:any) => {
     history.push('/view-favorites')
   }
+  const searchByTitle = (e:any) => {
+    history.push('/search-by-title')
+  }
  
   return (
     <div>
@@ -47,6 +50,7 @@ function Homepage() {
         <button onClick={viewPosts}>View posts</button>
         <button onClick={viewUserPosts}>View your posts</button>
         <button onClick={viewFavorites}>View your favs</button>
+        <button onClick={searchByTitle}>search by title</button>
 
       </div>
     </div>
@@ -76,6 +80,7 @@ function App() {
         <Route path="/view-user-posts" component={ViewUserPosts}/>
         <Route path="/view-favorites" component={ViewFavorites}/>
         <Route path="/update-post/:id" component={UpdatePost}/>
+        <Route path="/search-by-title" component={SearchByTitle}/>
 
 
 

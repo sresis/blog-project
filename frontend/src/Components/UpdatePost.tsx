@@ -1,9 +1,10 @@
 import axios from 'axios'
 import {useState} from 'react'
+import { useHistory } from 'react-router-dom';
+
 function UpdatePost (id:any) {
-    const test:any = id.match.params['id']
-    console.log(test);
-    console.log('id^^^');
+    const idInput:number = id.match.params['id']
+    const history = useHistory();
 
     const initialInputs = {
         postContent: ''
@@ -20,10 +21,9 @@ function UpdatePost (id:any) {
         event.preventDefault();
         console.log(postInput);
   
-        axios.post(`http://localhost:8080/update_post/` + test, postInput)
+        axios.post(`http://localhost:8080/update_post/` + idInput, postInput)
         .then((res: any) => {
-            console.log('ccc');
-            console.log(id)
+            history.push('/view-user-posts');
 
         })
         .catch((err:any) => {

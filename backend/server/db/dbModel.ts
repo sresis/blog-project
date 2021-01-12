@@ -1,7 +1,5 @@
 "use strict"
 
-import { SequelizeScopeError } from "sequelize/types";
-
 const { Sequelize, DataTypes } = require('sequelize-typescript');
 require('dotenv').config();
 

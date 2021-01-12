@@ -1,9 +1,6 @@
 import * as express from 'express';
 import { Users, Posts, Favorites } from './db/dbModel';
 let session = require('express-session');
-const user = require('./db/CRUD/user');
-const post = require('./db/CRUD/post');
-const favorite = require('./db/CRUD/favorite');
 const createError = require('http-errors');
 const cors = require('cors')
 const port = 8080;
@@ -11,7 +8,10 @@ require('dotenv').config();
 const app = express();
 app.use(cors()) // prevent cors error
 const bodyParser = require('body-parser')
-const Sequelize = require('sequelize-values')();
+// CRUD function files for data models
+const user = require('./db/CRUD/user');
+const post = require('./db/CRUD/post');
+const favorite = require('./db/CRUD/favorite');
 
 app.use(bodyParser.json()) // for parsing json
  
@@ -37,7 +37,7 @@ app.post('/create_post', (req: express.Request, res: express.Response) => {
   // insert function to create user account
   // handle if blanks
   // handle if already regsistered
-  res.json({ message: 'success.' });
+  res.json({ message: 'success.' })
 })
 
 // login user
@@ -58,62 +58,80 @@ app.post('/login', (req: express.Request, res: express.Response) => {
       res.json({'success': username})
     }
   })
-  // log out user
-  app.get('/logout', (req, res) => {
-    session['current'] = null;
-    res.json({'success': 'logout'})
+// log out user
+app.get('/logout', (req, res) => {
+  session['current'] = null;
+  res.json({'success': 'logout'})
+
+})
+app.get('/show_posts', (req, res) => {
+  let postData = [];
+  const posts = post.showAllPosts().then(function (posts: Array<typeof Posts>) {
+    for (const item of posts) {
+      postData.push(item.dataValues);
+    }
+    res.json(postData)
 
   })
-  app.get('/show_posts', (req, res) => {
-    let postData = [];
-    const posts = post.showAllPosts().then(function (posts: Array<typeof Posts>) {
-      for (const item of posts) {
-        postData.push(item.dataValues);
-      }
-      res.json(postData)
+})
+// show all the posts that the user has made
+app.get('/show_user_posts', (req, res) => {
+  let postData = [];
+  const userID:number = session['current']
+  const posts = post.showUserPosts(userID).then(function (posts: Array<typeof Posts>) {
+    for (const item of posts) {
+      postData.push(item.dataValues);
+    }
+    res.json(postData)
+  })
+})
+// shows user's favorites
+app.get('/show_favorites', (req, res) => {
+  let favoriteData = [];
+  const userID: number = session['current']
+  const favorites = favorite.viewUserFavorites(userID).then(function (favorites: Array<typeof Favorites>) {
+    for (const item of favorites) {
+      favoriteData.push(item.dataValues);
+    }
+    res.json(favoriteData)
 
-    })
   })
-  // show all the posts that the user has made
-  app.get('/show_user_posts', (req, res) => {
-    let postData = [];
-    const userID:number = session['current']
-    const posts = post.showUserPosts(userID).then(function (posts: Array<typeof Posts>) {
-      for (const item of posts) {
-        postData.push(item.dataValues);
-      }
-      res.json(postData)
-    })
-  })
-  // shows user's favorites
-  app.get('/show_favorites', (req, res) => {
-    let favoriteData = [];
-    const userID: number = session['current']
-    const favorites = favorite.viewUserFavorites(userID).then(function (favorites: Array<typeof Favorites>) {
-      for (const item of favorites) {
-        favoriteData.push(item.dataValues);
-      }
-      res.json(favoriteData)
+})
+// creates a favorite post
+app.post('/create_favorite/:id', (req: any, res: express.Response) => {
+  const userID = session['current']
+  favorite.createFavorite(userID, req.params['id'])    
+  res.json({ message: 'success.' });
+})
+// deletes a post
+app.post('/delete_post/:id', (req: any, res: express.Response) => {
+  post.deletePost(req.params['id'])
+  res.json({'message': 'success'});
+})
+app.get('/search_by_title', (req, res) => {
+  let postData = [];
+  console.log('hit it');
+  
+  const searchTerm: string = 'test';
+  const posts = post.searchPostTitle(searchTerm).then(function (posts: Array<typeof Posts>) {
+    console.log('innter');
+    for (const item of posts) {
+      postData.push(item.dataValues);
+      console.log(item.dataValues);
+    }
+    res.json(postData)
 
-    })
   })
-  // creates a favorite post
-  app.post('/create_favorite/:id', (req: any, res: express.Response) => {
-    const userID = session['current']
-    favorite.createFavorite(userID, req.params['id'])    
-    res.json({ message: 'success.' });
-  })
-  // deletes a post
-  app.post('/delete_post/:id', (req: any, res: express.Response) => {
-    post.deletePost(req.params['id'])
-    res.json({'message': 'success'});
-  })
-  app.post('/update_post/:id', (req: express.Request, res: express.Response)=> {
-    const {postContent} = req.body
-    console.log(postContent);
-    post.updatePost(req.params['id'], postContent)
-    res.json({'message': 'success'})
-  })
+})
+
+
+app.post('/update_post/:id', (req: express.Request, res: express.Response)=> {
+  const {postContent} = req.body
+  console.log(postContent);
+  post.updatePost(req.params['id'], postContent)
+  res.json({'message': 'success'})
+})
+
 })
 
 function logger (req: Request, res: Response, next: express.NextFunction) {

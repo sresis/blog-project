@@ -25,7 +25,6 @@ function ViewUserPosts () {
                     <div className="details">
                     <p>{visiblePost.postContent}</p>
                     <button onClick={() => DeletePost(`${visiblePost.id}`)}>Delete post</button>
-                    <button onClick={() => UpdatePost(`${visiblePost.id}`)}>Update post</button>
                     <button onClick={()=>{history.push(`/update-post/${visiblePost.id}`)}}>Update post</button>
                     </div>
                 </div>

@@ -30,6 +30,15 @@ function showUserPosts(userID: number) {
         }
     })
 }
+// show all posts containing search term in title
+function searchPostTitle(searchTerm: string) {
+    console.log('attempt')
+    return Posts.findAll({
+        where: {
+            postTitle: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('postTitle')), 'LIKE', '%' + searchTerm + '%')        }
+        
+    })
+}
 // delete a post
 function deletePost(id: number) {
     Posts.destroy({
@@ -45,4 +54,4 @@ function showAllPosts() {
       })
 
 }
-export { createPost, updatePost, showAllPosts, showUserPosts, deletePost }
+export { createPost, updatePost, showAllPosts, showUserPosts, deletePost, searchPostTitle }
