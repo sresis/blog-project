@@ -2,7 +2,6 @@ import React, {useState, createContext } from 'react';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import { couldStartTrivia } from 'typescript';
-import {Card } from 'react-bootstrap';
 const initialInputs = {
     username: '',
     password: ''
@@ -14,6 +13,7 @@ function Login () {
 
     // handle when user types login info
     const handleLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault();
         setLoginInput({
           ...loginInput,
           [event.currentTarget.name]: event.currentTarget.value
@@ -27,13 +27,8 @@ function Login () {
             alert(res.data.error)
         }
         else {
-            console.log(res.data);
-            console.log('xx');
-
             localStorage.setItem("token", "true");
             window.location.reload(true); // refresh page
-            history.push('/');
-            console.log('reached this');
         }    
     })
     .catch((err:any) => {
@@ -41,6 +36,7 @@ function Login () {
     })
     // reset
     setLoginInput(initialInputs)
+    history.push('/');
     }
 
 return (

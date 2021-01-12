@@ -17,46 +17,10 @@ import {Button, Alert, Col, Row, Collapse,
 
 
 function Homepage() {
-  let history = useHistory()
-  const createNewUser = (e:any) => {
-    history.push("/create-account")
-  }
-  const login = (e:any) => {
-    history.push('/login')
-  }
-  const createPost = (e:any) => {
-    history.push('/create-post')
-  }
-  const logout = (e:any) => {
-    history.push('/logout')
-  }
-  const viewPosts = (e:any) => {
-    history.push('/view-posts')
-  }
-  const viewUserPosts = (e:any) => {
-    history.push('/view-user-posts')
-  }
-  const viewFavorites = (e:any) => {
-    history.push('/view-favorites')
-  }
-  const searchByTitle = (e:any) => {
-    history.push('/search-by-title')
-  }
  
   return (
     <div>
       hello
-      <button onClick={createNewUser}>make an account</button>
-      <button onClick={login}>login</button>
-      <button onClick={createPost}>create Post</button>
-      <button onClick={logout}>logout</button>
-      <div>
-        <button onClick={viewPosts}>View posts</button>
-        <button onClick={viewUserPosts}>View your posts</button>
-        <button onClick={viewFavorites}>View your favs</button>
-        <button onClick={searchByTitle}>search by title</button>
-
-      </div>
     </div>
   )
 }
@@ -72,18 +36,12 @@ function App() {
     }, [loggedIn]);
   
   console.log(loggedIn);
-  //navigation
-  
-  
-  
-  
-    // group navbar links into 1) viewable by logged in users only 2) viewable when not logged in
     const Navigation = {
       'true': (
       <Navbar id ="topbar-post">
         <Col className="justify-content-end" id="after-login-links">
           <Link to="/">Home </Link>
-          <Link to="/view-user-posts">View Your Posts</Link>
+          <Link to="/create-post">Create Post</Link>
           <div className="dropdown">
             <div className="dropbtn">Search Posts</div>
             <div className="dropdown-content">

@@ -54,7 +54,7 @@ const Posts = sequelize.define('Posts', {
         allowNull: false
     },
     postContent: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(10000),
         allowNull: false
     },
     postDate: {

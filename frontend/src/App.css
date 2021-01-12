@@ -73,3 +73,8 @@ display: block;
     margin: 0 auto;
 
 }
+#contentInput {
+    height: 200px;
+    overflow: auto;
+    width: 100%;
+}

@@ -23,6 +23,13 @@ function CreatePost() {
   
       })
     }
+    const handleContentInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setPostInput({
+        ...postInput,
+        [event.currentTarget.name]: event.currentTarget.value
+  
+      })
+    }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       axios.post('http://localhost:8080/create_post', postInput)
@@ -39,7 +46,9 @@ function CreatePost() {
     
     return(
       <form onSubmit={handleSubmit}>
-        <label>Title
+        <label>
+          <h3>Title</h3>
+          <p></p>
           <input
             type='text'
             name='postTitle'
@@ -47,14 +56,19 @@ function CreatePost() {
             onChange={handleInput} 
           />
         </label>
-        <label>Content
-          <input
-            type='text'
+        <p></p>
+        <label>
+          <h3>Content</h3>
+          <p></p>
+          <textarea
             name='postContent'
+            id="contentInput"
+            className="scrollabletextbox"
             value={postInput.postContent}
-            onChange={handleInput} 
+            onChange={handleContentInput} 
           />
         </label>
+        <p></p>
         <button>Create Post</button>
       </form>
     )
