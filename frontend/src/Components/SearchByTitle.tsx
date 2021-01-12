@@ -23,6 +23,7 @@ function SearchByTitle() {
       axios.post('http://localhost:8080/search_by_title', searchInput)
       .then((res: any) => {
           setVisiblePosts(res.data);
+          console.log(visiblePosts);
       })
       .catch((err:any) => {
           console.log(err.message, err.name)
@@ -51,11 +52,11 @@ function SearchByTitle() {
                 return (
                 <Card className="postCard" key={index}>
                     <Card.Body>
-                        <Card.Title>{visiblePost.postTitle}</Card.Title>
+                        <Card.Title><h4>{visiblePost.postTitle}</h4></Card.Title>
                         <Card.Text>{visiblePost.postContent}</Card.Text>
-
+                        <i>Posted by {visiblePost.User.username}</i>
                     </Card.Body>
-
+                    
                 </Card>
                 );
             })}

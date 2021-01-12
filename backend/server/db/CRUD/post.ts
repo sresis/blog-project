@@ -35,7 +35,9 @@ function searchPostTitle(searchTerm: string) {
     console.log('attempt')
     return Posts.findAll({
         where: {
-            postTitle: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('postTitle')), 'LIKE', '%' + searchTerm + '%')        }
+            postTitle: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('postTitle')), 'LIKE', '%' + searchTerm + '%')
+        },
+        include: [Users]
         
     })
 }
