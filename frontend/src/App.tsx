@@ -43,7 +43,7 @@ function App() {
           <Link to="/">Home </Link>
           <Link to="/create-post">Create Post</Link>
           <div className="dropdown">
-            <div className="dropbtn">Search Posts</div>
+            <div className="dropbtn">Explore Posts</div>
             <div className="dropdown-content">
               <Link to="/search-by-title">Search by Title</Link>
               <Link to="/view-user-posts">View Your Posts</Link>
@@ -71,8 +71,6 @@ function App() {
         </Navbar>
       )
   }
-
-  
   return (
     <div className="App">
       <BrowserRouter>
