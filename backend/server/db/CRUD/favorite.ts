@@ -8,7 +8,7 @@ function createFavorite(userID: number, postID: number) {
                             postID: postID
                             });
 }
-//
+
 function viewUserFavorites(userID: number) {
     return Favorites.findAll({
         where: {
@@ -18,8 +18,16 @@ function viewUserFavorites(userID: number) {
         include: [Users, Posts]
     })
 }
+// remove a favorite post
+function deleteFavorite(id: number) {
+    Favorites.destroy({
+        where: {
+            id: id
+        }
+    })
+}
 
 
 export {
-    createFavorite, viewUserFavorites
+    createFavorite, viewUserFavorites, deleteFavorite
 }

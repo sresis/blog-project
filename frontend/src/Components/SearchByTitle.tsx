@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {useState} from 'react'
 import { Card } from 'react-bootstrap';
+import CreateFavorite  from './CreateFavorite';
 
 function SearchByTitle() {
     const initialInputs = {
@@ -54,6 +55,10 @@ function SearchByTitle() {
                     <Card.Body>
                         <Card.Title><h4>{visiblePost.postTitle}</h4></Card.Title>
                         <Card.Text>{visiblePost.postContent}</Card.Text>
+                        <button className="favorite-but" onClick={() => CreateFavorite(`${visiblePost.id}`)}>
+                            ♥
+                        </button>
+                        
                         <i>Posted by {visiblePost.User.username}</i>
                     </Card.Body>
                     

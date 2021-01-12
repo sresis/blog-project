@@ -108,6 +108,11 @@ app.post('/delete_post/:id', (req: any, res: express.Response) => {
   post.deletePost(req.params['id'])
   res.json({'message': 'success'});
 })
+// deletes a favorite post
+app.post('/delete_favorite/:id', (req: any, res: express.Response) => {
+  favorite.deleteFavorite(req.params['id'])
+  res.json({'message': 'success'});
+})
 app.post('/search_by_title', (req: express.Request, res: express.Response) => {
   let postData = [];
   console.log(req.body);
