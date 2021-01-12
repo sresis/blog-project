@@ -1,6 +1,7 @@
 import React, {useState, createContext } from 'react';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import { couldStartTrivia } from 'typescript';
 
 const initialInputs = {
     username: '',
@@ -27,8 +28,12 @@ function Login () {
         }
         else {
             console.log(res.data);
+            console.log('xx');
+
             localStorage.setItem("token", "true");
-            history.push('/') 
+            window.location.reload(true); // refresh page
+            history.push('/');
+            console.log('reached this');
         }    
     })
     .catch((err:any) => {

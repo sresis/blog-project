@@ -7,7 +7,9 @@ function Logout () {
     axios.get('http://localhost:8080/logout')
     .then((res: any) => {
         console.log(res);
-        localStorage.setItem("token", "false");   
+        localStorage.setItem("token", "false"); 
+        window.location.reload(true); // refresh page
+  
     })
     .catch((err:any) => {
         console.log(err.message, err.name)
