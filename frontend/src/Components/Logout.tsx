@@ -6,7 +6,8 @@ function Logout () {
     console.log('frontend logout')
     axios.get('http://localhost:8080/logout')
     .then((res: any) => {
-        console.log(res);   
+        console.log(res);
+        localStorage.setItem("token", "false");   
     })
     .catch((err:any) => {
         console.log(err.message, err.name)

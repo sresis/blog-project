@@ -121,6 +121,16 @@ app.post('/search_by_title', (req: express.Request, res: express.Response) => {
 
   })
 })
+app.get('/send_login', (req: express.Request, res: express.Response) => {
+  if (session['current']) {
+    console.log('current');
+    res.json({'status': true})
+  }
+  else {
+    res.json({'status': false})
+  }
+  
+})
 
 app.post('/update_post/:id', (req: express.Request, res: express.Response)=> {
   const {postContent} = req.body

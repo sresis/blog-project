@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState, createContext } from 'react';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
@@ -6,6 +6,7 @@ const initialInputs = {
     username: '',
     password: ''
   }
+
 function Login () {
     const history = useHistory()
     const [loginInput, setLoginInput] = useState<{username: string; password: string;}>(initialInputs)
@@ -25,7 +26,8 @@ function Login () {
             alert(res.data.error)
         }
         else {
-            console.log(res.data)
+            console.log(res.data);
+            localStorage.setItem("token", "true");
             history.push('/') 
         }    
     })
