@@ -117,8 +117,8 @@ app.get('/search_by_title', (req, res) => {
     console.log('innter');
     for (const item of posts) {
       postData.push(item.dataValues);
-      console.log(item.dataValues);
     }
+    console.log(postData);
     res.json(postData)
 
   })

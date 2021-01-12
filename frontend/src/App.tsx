@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import { Router, Switch, Route, useHistory, Link, BrowserRouter } from 'react-router-dom';
+import './App.css';
 
 import CreateAccount from './Components/CreateAccount'
 import Login from './Components/Login'

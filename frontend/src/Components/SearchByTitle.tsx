@@ -7,6 +7,8 @@ function SearchByTitle() {
     const initialInputs = {
       title: '',
     }
+    const [visiblePosts, setVisiblePosts] = useState(Array);
+
     const [searchInput, setSearchInput] = useState<{
                                             title: string
                                         }>(initialInputs)
@@ -17,10 +19,12 @@ function SearchByTitle() {
       })
     }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
+      event.preventDefault();
+      console.log(123333);
       axios.get('http://localhost:8080/search_by_title')
       .then((res: any) => {
-          history.push('/')
+          setVisiblePosts(res.data);
+          console.log(res.data);
       })
       .catch((err:any) => {
           console.log(err.message, err.name)
@@ -30,7 +34,8 @@ function SearchByTitle() {
 
     
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
+            <form onSubmit={handleSubmit}>
             <label>Title Contains: 
                 <input
                     type='text'
@@ -38,12 +43,31 @@ function SearchByTitle() {
                     value={searchInput.title}
                     onChange={handleInput} 
                 />
-        </label>
-
-
+            </label>
             <button>Submit</button>
+            </form>
+            <div className="posts">
+                {visiblePosts &&
+                visiblePosts.map((visiblePost:any, index) => {
+                    console.log(visiblePost);
+                return (
+                <div className="post" key={index}>
+                    <h2>{visiblePost.postTitle}</h2>
+                    <div className="details">
+                    <p>{visiblePost.postContent}</p>
+                    </div>
+                </div>
+                );
+            })}
+            </div>
 
-        </form>
+
+
+
+
+            
+        </div>
+        
     )
 
 }

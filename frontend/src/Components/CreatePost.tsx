@@ -11,7 +11,6 @@ function CreatePost() {
       postContent: '',
       postDate: Date() // current date/time
     }
-    console.log(initialInputs.postDate);
     const [postInput, setPostInput] = useState<{
                                             postTitle: string;
                                             postContent: string; 
@@ -26,7 +25,6 @@ function CreatePost() {
     }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      console.log('trying');
       axios.post('http://localhost:8080/create_post', postInput)
       .then((res: any) => {
           history.push('/')
