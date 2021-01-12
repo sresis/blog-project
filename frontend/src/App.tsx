@@ -83,9 +83,21 @@ function App() {
       <Navbar id ="topbar-post">
         <Col className="justify-content-end" id="after-login-links">
           <Link to="/">Home </Link>
-          <Link to="/create-post">Your Profile</Link>
-          <Link to="/view-posts">View Posts</Link>
           <Link to="/view-user-posts">View Your Posts</Link>
+          <div className="dropdown">
+            <div className="dropbtn">Search Posts</div>
+            <div className="dropdown-content">
+              <Link to="/search-by-title">Search by Title</Link>
+              <Link to="/view-user-posts">View Your Posts</Link>
+            </div>
+          </div>
+          <div className="dropdown">
+            <div className="dropbtn">Your Account</div>
+            <div className="dropdown-content">
+              <Link to="/view-user-posts">View Your Posts</Link>
+              <Link to="/view-favorites">View Your Favorites</Link>
+            </div>
+          </div>
           <Link to="/logout">Log Out</Link>
         </Col>
        </Navbar>

@@ -16,9 +16,9 @@ body {
 }
 form {
     width: 50%;
-    background-color:#ab987a;
+    background-color:#c3b192;
     opacity: 0.92;
-    border: 3px solid #041626;
+    border: 3px solid #0f1626;
     border-radius: 25px;
     padding: 10px;
     color: #2C2927;
@@ -26,15 +26,50 @@ form {
     margin-top: 30px;   
 }
 #topbar-pre, #topbar-post {
-    background-color: #041626;
+    background-color: #0f1626;
     color: #F5F5F5;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
-a {
+a, .dropdown {
     padding: 7px;
+    text-decoration: none;
 }
 #topbar-pre a:hover, #topbar-post a:hover {
-    color: #FF5330;
+    color: #FF533D;
 }
 a:visited {
     color: #F5F5F5;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}  
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {color: #FF533D;}
+/* formatting for the post display */
+.postCard {
+    background-color: #FF533D;
+    width: 50%;
+    margin: 0 auto;
+
 }

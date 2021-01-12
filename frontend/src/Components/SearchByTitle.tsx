@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {useState} from 'react'
+import { Card } from 'react-bootstrap';
 
 function SearchByTitle() {
     const initialInputs = {
@@ -48,12 +49,14 @@ function SearchByTitle() {
                 visiblePosts.map((visiblePost:any, index) => {
                     console.log(visiblePost);
                 return (
-                <div className="post" key={index}>
-                    <h2>{visiblePost.postTitle}</h2>
-                    <div className="details">
-                    <p>{visiblePost.postContent}</p>
-                    </div>
-                </div>
+                <Card className="postCard" key={index}>
+                    <Card.Body>
+                        <Card.Title>{visiblePost.postTitle}</Card.Title>
+                        <Card.Text>{visiblePost.postContent}</Card.Text>
+
+                    </Card.Body>
+
+                </Card>
                 );
             })}
             </div>
