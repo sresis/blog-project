@@ -1,10 +1,12 @@
 import React, {useState } from 'react';
+import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import DeletePost  from './DeletePost'
 import UpdatePost  from './UpdatePost'
 
 function ViewUserPosts () {
     const [visiblePosts, setVisiblePosts] = useState(Array);
+    const history = useHistory();
     const fetchData = () => {
         const response = axios.get('http://localhost:8080/show_user_posts')
         .then((res: any) => {
@@ -24,6 +26,7 @@ function ViewUserPosts () {
                     <p>{visiblePost.postContent}</p>
                     <button onClick={() => DeletePost(`${visiblePost.id}`)}>Delete post</button>
                     <button onClick={() => UpdatePost(`${visiblePost.id}`)}>Update post</button>
+                    <button onClick={()=>{history.push(`/update-post/${visiblePost.id}`)}}>Update post</button>
                     </div>
                 </div>
                 );

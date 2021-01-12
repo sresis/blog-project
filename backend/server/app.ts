@@ -22,6 +22,8 @@ app.get('/', (req, res) => {
 // create user account
 app.post('/create_account', (req: express.Request, res: express.Response) => {
   const {username, password} = req.body
+  console.log(req.body);
+  console.log('make account');
   // insert function to create user account
   // handle if blanks
   // handle if already regsistered
@@ -67,7 +69,6 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     const posts = post.showAllPosts().then(function (posts: Array<typeof Posts>) {
       for (const item of posts) {
         postData.push(item.dataValues);
-        console.log(postData);
       }
       res.json(postData)
 
@@ -80,7 +81,6 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     const posts = post.showUserPosts(userID).then(function (posts: Array<typeof Posts>) {
       for (const item of posts) {
         postData.push(item.dataValues);
-        console.log(postData);
       }
       res.json(postData)
     })
@@ -92,7 +92,6 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     const favorites = favorite.viewUserFavorites(userID).then(function (favorites: Array<typeof Favorites>) {
       for (const item of favorites) {
         favoriteData.push(item.dataValues);
-        console.log(favoriteData);
       }
       res.json(favoriteData)
 
@@ -109,8 +108,10 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     post.deletePost(req.params['id'])
     res.json({'message': 'success'});
   })
-  app.post('/update_post/:id', (req: any, res: express.Response)=> {
-    post.updatePost(14, 'udpated content here')
+  app.post('/update_post/:id', (req: express.Request, res: express.Response)=> {
+    const {postContent} = req.body
+    console.log(postContent);
+    post.updatePost(req.params['id'], postContent)
     res.json({'message': 'success'})
   })
 })

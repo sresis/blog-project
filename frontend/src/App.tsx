@@ -8,7 +8,7 @@ import CreatePost from './Components/CreatePost'
 import ViewPosts from './Components/ViewPosts'
 import ViewUserPosts from './Components/ViewUserPosts'
 import ViewFavorites from './Components/ViewFavorites'
-
+import UpdatePost from './Components/UpdatePost'
 
 
 function Homepage() {
@@ -75,6 +75,8 @@ function App() {
         <Route path="/view-posts/" component={ViewPosts}/>
         <Route path="/view-user-posts" component={ViewUserPosts}/>
         <Route path="/view-favorites" component={ViewFavorites}/>
+        <Route path="/update-post/:id" component={UpdatePost}/>
+
 
 
         <Route path="/" component={Homepage}/>
