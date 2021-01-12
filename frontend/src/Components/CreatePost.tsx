@@ -52,6 +52,7 @@ function CreatePost() {
           <input
             type='text'
             name='postTitle'
+            id='titleInput'
             value={postInput.postTitle}
             onChange={handleInput} 
           />

@@ -14,6 +14,7 @@ function viewUserFavorites(userID: number) {
         where: {
             userID: userID
         },
+        order: [['id', 'DESC']],
         include: [Users, Posts]
     })
 }

@@ -10,7 +10,7 @@ function UpdatePost (id:any) {
         postContent: ''
       }
     const [postInput, setPostInput] = useState<{postContent: string;}>(initialInputs)
-    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setPostInput({
           ...postInput,
           [event.currentTarget.name]: event.currentTarget.value
@@ -33,13 +33,16 @@ function UpdatePost (id:any) {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <label>Content 
-                <input
-                type='text'
+            <label>
+            <h3>Updated Content</h3>
+            <p></p>
+            <textarea
                 name='postContent'
+                id="contentInput"
+                className="scrollabletextbox"
                 value={postInput.postContent}
-                onChange={handleInput}
-                />
+                onChange={handleInput} 
+            />
             </label>
             <button>Submit</button>
         </form>

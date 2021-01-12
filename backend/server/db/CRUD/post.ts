@@ -27,7 +27,8 @@ function showUserPosts(userID: number) {
     return Posts.findAll({
         where: {
             userID: userID
-        }
+        },
+        order: [['id', 'DESC']],
     })
 }
 // show all posts containing search term in title
@@ -37,8 +38,8 @@ function searchPostTitle(searchTerm: string) {
         where: {
             postTitle: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('postTitle')), 'LIKE', '%' + searchTerm + '%')
         },
-        include: [Users]
-        
+        include: [Users],
+        order: [['id', 'DESC']],        
     })
 }
 // delete a post
