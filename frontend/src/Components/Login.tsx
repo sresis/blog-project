@@ -45,6 +45,7 @@ function Login () {
 
 return (
     <form onSubmit={handleSubmit}>
+      <h2>Login</h2>
         <label>Username
           <input
             type='text'

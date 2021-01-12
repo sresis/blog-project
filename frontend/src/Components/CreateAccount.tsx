@@ -32,6 +32,7 @@ function CreateAccount() {
     
     return(
       <form onSubmit={handleSubmit}>
+        <h2>Create Account</h2>
         <label>Username
           <input
             type='text'
