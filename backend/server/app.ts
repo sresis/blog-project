@@ -108,22 +108,19 @@ app.post('/delete_post/:id', (req: any, res: express.Response) => {
   post.deletePost(req.params['id'])
   res.json({'message': 'success'});
 })
-app.get('/search_by_title', (req, res) => {
+app.post('/search_by_title', (req: express.Request, res: express.Response) => {
   let postData = [];
-  console.log('hit it');
+  console.log(req.body);
   
-  const searchTerm: string = 'test';
+  const searchTerm: string = req.body['title'];
   const posts = post.searchPostTitle(searchTerm).then(function (posts: Array<typeof Posts>) {
-    console.log('innter');
     for (const item of posts) {
       postData.push(item.dataValues);
     }
-    console.log(postData);
     res.json(postData)
 
   })
 })
-
 
 app.post('/update_post/:id', (req: express.Request, res: express.Response)=> {
   const {postContent} = req.body

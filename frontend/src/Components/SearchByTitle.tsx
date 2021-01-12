@@ -1,9 +1,7 @@
 import axios from 'axios'
 import {useState} from 'react'
-import { useHistory } from 'react-router-dom';
 
 function SearchByTitle() {
-    const history = useHistory();
     const initialInputs = {
       title: '',
     }
@@ -18,13 +16,12 @@ function SearchByTitle() {
         [event.currentTarget.name]: event.currentTarget.value
       })
     }
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log(123333);
-      axios.get('http://localhost:8080/search_by_title')
+      axios.post('http://localhost:8080/search_by_title', searchInput)
       .then((res: any) => {
           setVisiblePosts(res.data);
-          console.log(res.data);
       })
       .catch((err:any) => {
           console.log(err.message, err.name)
@@ -60,15 +57,7 @@ function SearchByTitle() {
                 );
             })}
             </div>
-
-
-
-
-
-            
-        </div>
-        
+        </div> 
     )
-
 }
 export default SearchByTitle
