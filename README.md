@@ -22,8 +22,11 @@ Blogio is a blog post web application.
 - **Ability to create an account, log in, and log out.**
     - **Create an account:**
     I built a CreateAccount React component that renders a registration form. Through an onSubmit event, upon submission of the registration form, the username and password inputs are sent via an axios post request to the create_account endpoint in the server. Utilizing sequelize-typescript, a new record in the Users database is created with the username and password inputs. As a next step, I am interested in adding encryption for security when storing the passwords in the database.
+    - **Log In:**
+    The Login React component renders a login form. Upon submission of the form, the username and password inputs are sent to the login endpoint in the server, where I created a function that validates 1) if the username exists in the database and 2) that the input password matches the DB password. If both conditions are true, the user is logged in, their user ID is added to the express session, and the user is redirected to the homepage. The navigation bar is conditionally rendered based on the user's login status.
+    - **Log Out:**
+    Upon clicking the logout button in the navigation bar, the Logout component in React hits the logout endpoint in Express. The user is logged out, the express session is removed, and the conditionally-rendered navigation now shows the "pre-login" links.
 
-The navigation bar is conditionally rendered based on the user's login status. 
 <img src="./public/reg.gif">
 
 - **CRUD Functionality**
