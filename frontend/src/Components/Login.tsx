@@ -52,6 +52,7 @@ return (
             onChange={handleLoginInput} 
           />
         </label>
+        <p></p>
         <label>Password
           <input
             data-testid="password"
@@ -61,6 +62,7 @@ return (
             onChange={handleLoginInput} 
           />
         </label>
+        <p></p>
         <button>Log In</button>
       </form>
 )

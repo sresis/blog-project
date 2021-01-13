@@ -32,6 +32,7 @@ function SearchByTitle() {
     }
     return (
         <div>
+            <h2>Search By Title</h2>
             <form onSubmit={handleSubmit}>
             <label>Title Contains: 
                 <input
@@ -60,10 +61,8 @@ function SearchByTitle() {
                         <button className="favorite-but" onClick={() => CreateFavorite(`${visiblePost.id}`)}>
                             ♥
                         </button>
-                        
                         <i>Posted by {visiblePost.User.username}</i>
                     </Card.Body>
-                    
                 </Card>
                 );
             })}
