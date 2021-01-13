@@ -30,8 +30,7 @@ form {
 #topbar-pre, #topbar-post {
     background-color: #0f1626;
     color: #F5F5F5;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    height: 30px;
     justify-content: flex-end;
     text-align: right;
 
@@ -39,6 +38,8 @@ form {
 a, .dropdown {
     padding: 7px;
     text-decoration: none;
+    vertical-align:middle;
+    margin: 0;
 }
 #topbar-pre a:hover, #topbar-post a:hover {
     color: #FF533D;
