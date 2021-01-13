@@ -16,9 +16,9 @@ function ViewPosts () {
             <div className="posts">
                 {visiblePosts &&
                 visiblePosts.map((visiblePost:any, index) => {
-                    console.log(visiblePost);
                 return (
                 <div className="post" key={index}>
+                    
                     <h2>{visiblePost.postTitle}</h2>
                     <div className="details">
                     <p>{visiblePost.postContent}</p>
