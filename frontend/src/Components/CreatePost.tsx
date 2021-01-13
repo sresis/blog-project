@@ -41,9 +41,7 @@ function CreatePost() {
       })
       // reset
       setPostInput(initialInputs)
-  
     }
-    
     return(
       <form onSubmit={handleSubmit}>
         <label>
