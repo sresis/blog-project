@@ -53,7 +53,8 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     }
     // otherwise, create session and log them in
     else {
-      session['current'] = users[0].id
+      session['current'] = users[0].id;
+      console.log(users[0].id)
       console.log('logged in');
       res.json({'success': username})
     }
