@@ -3,9 +3,8 @@
 Blogio is an app that allows users to ......
 
 ### Contents
-[Tech Stack](###Techstack)
+- [Tech Stack](#Techstack)
 
-# Foo
 - Installation
 - Features
 - Demo Video
