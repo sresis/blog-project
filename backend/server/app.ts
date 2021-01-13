@@ -21,12 +21,7 @@ app.get('/', (req, res) => {
 
 // create user account
 app.post('/create_account', (req: express.Request, res: express.Response) => {
-  const {username, password} = req.body
-  console.log(req.body);
-  console.log('make account');
-  // insert function to create user account
-  // handle if blanks
-  // handle if already regsistered
+  const {username, password} = req.body;
   user.createAccount(username, password)
   res.json({ message: 'success.' });
 })
@@ -54,8 +49,6 @@ app.post('/login', (req: express.Request, res: express.Response) => {
     // otherwise, create session and log them in
     else {
       session['current'] = users[0].id;
-      console.log(users[0].id)
-      console.log('logged in');
       res.json({'success': username})
     }
   })
@@ -79,13 +72,10 @@ app.get('/show_posts', (req, res) => {
 app.get('/show_user_posts', (req, res) => {
   let postData = [];
   const userID: number = session['current'];
-  console.log('show user posts');
-  console.log(userID);
 
   const posts = post.showUserPosts(userID).then(function (posts: Array<typeof Posts>) {
     for (const item of posts) {
       postData.push(item.dataValues);
-      console.log(item.dataValues);
     }
     res.json(postData)
   })
@@ -94,13 +84,11 @@ app.get('/show_user_posts', (req, res) => {
 app.get('/show_favorites', (req, res) => {
   let favoriteData = [];
   const userID: number = session['current'];
-  console.log(userID);
   const favorites = favorite.viewUserFavorites(userID).then(function (favorites: Array<typeof Favorites>) {
     for (const item of favorites) {
       favoriteData.push(item.dataValues);
     }
     res.json(favoriteData)
-
   })
 })
 // creates a favorite post
@@ -130,21 +118,29 @@ app.post('/delete_favorite/:id', (req: any, res: express.Response) => {
   res.json({'message': 'success'});
 })
 app.post('/search_by_title', (req: express.Request, res: express.Response) => {
-  let postData = [];
-  console.log(req.body);
-  
+  let postData = [];  
   const searchTerm: string = req.body['title'];
   const posts = post.searchPostTitle(searchTerm).then(function (posts: Array<typeof Posts>) {
     for (const item of posts) {
       postData.push(item.dataValues);
     }
     res.json(postData)
-
+  })
+})
+app.post('/search_by_content', (req: express.Request, res: express.Response) => {
+  let postData = [];  
+  console.log('backend');
+  const searchTerm: string = req.body['content'];
+  console.log(searchTerm);
+  const posts = post.searchPostContent(searchTerm).then(function (posts: Array<typeof Posts>) {
+    for (const item of posts) {
+      postData.push(item.dataValues);
+    }
+    res.json(postData)
   })
 })
 app.get('/send_login', (req: express.Request, res: express.Response) => {
   if (session['current']) {
-    console.log('current');
     res.json({'status': true})
   }
   else {
@@ -155,9 +151,6 @@ app.get('/send_login', (req: express.Request, res: express.Response) => {
 
 app.post('/update_post/:id', (req: express.Request, res: express.Response)=> {
   const {content} = req.body;
-  console.log(req);
-  console.log('update backend');
-  console.log(content);
   post.updatePost(req.params['id'], content)
   res.json({'message': 'success'})
 })

@@ -1,7 +1,6 @@
-import React, {useState, useEffect, createContext } from 'react';
-import { Router, Switch, Route, useHistory, Link, BrowserRouter } from 'react-router-dom';
+import React, {useState } from 'react';
+import { Switch, Route, Link, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import axios from 'axios'
 
 import CreateAccount from './Components/CreateAccount'
 import Login from './Components/Login'
@@ -12,8 +11,8 @@ import ViewUserPosts from './Components/ViewUserPosts'
 import ViewFavorites from './Components/ViewFavorites'
 import UpdatePost from './Components/UpdatePost'
 import SearchByTitle from './Components/SearchByTitle'
-import {Button, Alert, Col, Row, Collapse, 
-	Form, FormControl, Nav, Navbar, Popover } from 'react-bootstrap';
+import SearchByContent from './Components/SearchByContent'
+import { Col, Navbar } from 'react-bootstrap';
 
 
 function Homepage() {
@@ -48,7 +47,7 @@ function App() {
             <div className="dropbtn">Explore Posts</div>
             <div className="dropdown-content">
               <Link to="/search-by-title">Search by Title</Link>
-              <Link to="/view-user-posts">View Your Posts</Link>
+              <Link to="/search-by-content">Search by Content</Link>
             </div>
           </div>
           <div className="dropdown">
@@ -87,6 +86,7 @@ function App() {
           <Route path="/view-favorites" component={ViewFavorites}/>
           <Route path="/update-post/:id" component={UpdatePost}/>
           <Route path="/search-by-title" component={SearchByTitle}/>
+          <Route path="/search-by-content" component={SearchByContent}/>
           <Route path="/" component={Homepage}/>
       
         </Switch>

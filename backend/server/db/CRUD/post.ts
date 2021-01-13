@@ -22,8 +22,6 @@ function updatePost(id: number, postContent: string) {
 }
 // show all posts made by current user
 function showUserPosts(userID: number) {
-    console.log(userID);
-    console.log('test');
     return Posts.findAll({
         where: {
             userID: userID
@@ -42,7 +40,16 @@ function getPostInfo(id: number) {
 }
 // show all posts containing search term in title
 function searchPostTitle(searchTerm: string) {
-    console.log('attempt')
+    return Posts.findAll({
+        where: {
+            postTitle: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('postTitle')), 'LIKE', '%' + searchTerm + '%')
+        },
+        include: [Users],
+        order: [['id', 'DESC']],        
+    })
+}
+// show all posts containing search term in title
+function searchPostContent(searchTerm: string) {
     return Posts.findAll({
         where: {
             postTitle: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('postTitle')), 'LIKE', '%' + searchTerm + '%')
@@ -66,4 +73,4 @@ function showAllPosts() {
       })
 
 }
-export { createPost, updatePost, showAllPosts, showUserPosts, deletePost, searchPostTitle, getPostInfo }
+export { createPost, updatePost, showAllPosts, showUserPosts, deletePost, searchPostTitle, getPostInfo, searchPostContent}

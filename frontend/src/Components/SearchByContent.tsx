@@ -5,12 +5,12 @@ import CreateFavorite  from './CreateFavorite';
 
 function SearchByContent() {
     const initialInputs = {
-      title: '',
+      content: '',
     }
     const [visiblePosts, setVisiblePosts] = useState(Array);
 
     const [searchInput, setSearchInput] = useState<{
-                                            title: string
+                                            content: string
                                         }>(initialInputs)
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
       setSearchInput({
@@ -20,7 +20,7 @@ function SearchByContent() {
     }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      axios.post('http://localhost:8080/search_by_title', searchInput)
+      axios.post('http://localhost:8080/search_by_content', searchInput)
       .then((res: any) => {
           setVisiblePosts(res.data);
           console.log(visiblePosts);
@@ -32,14 +32,14 @@ function SearchByContent() {
     }
     return (
         <div>
-            <h2>Search By Title</h2>
+            <h2>Search By Content</h2>
             <form onSubmit={handleSubmit}>
-            <label>Title Contains: 
+            <label>Content Contains: 
                 <input
                     type='text'
-                    name='title'
-                    id='title'
-                    value={searchInput.title}
+                    name='content'
+                    id='content'
+                    value={searchInput.content}
                     onChange={handleInput} 
                 />
             </label>
