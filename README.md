@@ -45,13 +45,13 @@ Blogio is a blog post web application.
     <img src="./public/delete.gif">
 - **Search for blogs based on title or content**
     I created SearchByTitle and SearchByContent components in React that render a search form. Upon submitting the search form, the search string is sent to the server, to search_by_title and search_by_content endpoints. These endpoints execute a sequelize query that converts the search term to lowercase and returns all Posts that include the search term. The matching posts are sent back to the client and are rendered with React cards. 
-    
+
     In future development of Blogio, I plan to combine these search features onto one form, with users having the option to search by one or both of these fields. Additionally, with my current data model it is also feasible to implement search posts by post date or by username.   
     <img src="./public/search.gif">
-Sequelize -> converted to lowercase
-*** future: add filtering by update date, 
-- **Favorite Posts:**
 
+- **Favorite Posts**
+Users have the ability to favorite posts, as well as view the posts they have saved to their favorites. As users browse the posts, they can favorite multiple posts. In future development, I would like to have the favorite button be conditionally rendered in different colors based on if the user has favorited the post. On their Favorites page, users have the ability to view their favorites as well as to remove posts from their favorites. Similar to the delete post feature, the remove favorite button sends a request to the server to delete the record of the favorite post in the DB, and this deletion is executed with sequelize. 
+<img src="./public/favorite.gif">
 ### Database Design<a name="Database"></a>
 The database includes 3 tables: Users, Posts, and Favorites.
 - Users
