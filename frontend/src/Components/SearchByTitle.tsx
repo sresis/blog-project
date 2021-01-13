@@ -52,7 +52,11 @@ function SearchByTitle() {
                 <Card className="postCard" key={index}>
                     <Card.Body>
                         <Card.Title><h4>{visiblePost.postTitle}</h4></Card.Title>
-                        <Card.Text>{visiblePost.postContent}</Card.Text>
+                        <Card.Text>
+                            <div className="card-text">
+                                {visiblePost.postContent}
+                            </div>
+                            </Card.Text>
                         <button className="favorite-but" onClick={() => CreateFavorite(`${visiblePost.id}`)}>
                             ♥
                         </button>

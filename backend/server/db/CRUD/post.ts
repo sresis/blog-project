@@ -14,9 +14,7 @@ function createPost(postTitle: string, postContent: string, postDate: string, us
 }
 // update the post content
 function updatePost(id: number, postContent: string) {
-    console.log('xxx');
-    console.log(id);
-    console.log(postContent);
+
     Posts.update(
         {postContent: postContent},
         {returning: true, where: {id: id} }

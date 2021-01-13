@@ -73,16 +73,25 @@ display: block;
 .dropdown:hover .dropbtn {color: #FF533D;}
 /* formatting for the post display */
 .postCard {
-    background-color: #FF533D;
+    border: 3px solid #0f1626;
+    border-radius: 10px;
     width: 50%;
     margin: 0 auto;
-
+    margin-top: 5px;
+}
+.card-text {
+    height: 150px;
+    overflow: auto;
 }
 #contentInput {
-    height: 200px;
+    overflow-y: auto;    
     overflow: auto;
     width: 100%;
 }
 #titleInput {
     width: 90%;
+}
+#homepage-pic {
+    width: 80%;
+    margin-top: 10%;
 }

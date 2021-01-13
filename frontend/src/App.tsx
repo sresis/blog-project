@@ -20,7 +20,7 @@ function Homepage() {
  
   return (
     <div>
-      hello
+      <img id="homepage-pic" src="https://i.ibb.co/6m5HBRR/Welcome-to.png" alt="homepage-banner1"></img>
     </div>
   )
 }
