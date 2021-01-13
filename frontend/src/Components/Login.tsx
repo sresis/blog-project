@@ -8,7 +8,7 @@ const initialInputs = {
   }
 
 function Login () {
-    const history = useHistory()
+    const history = useHistory();
     const [loginInput, setLoginInput] = useState<{username: string; password: string;}>(initialInputs)
 
     // handle when user types login info
@@ -40,18 +40,21 @@ function Login () {
     }
 
 return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="login-form" data-testid="login-form">
       <h2>Login</h2>
         <label>Username
           <input
+            data-testid="username"
             type='text'
             name='username'
+            id='username'
             value={loginInput.username}
             onChange={handleLoginInput} 
           />
         </label>
         <label>Password
           <input
+            data-testid="password"
             type='password'
             name='password'
             value={loginInput.password}
