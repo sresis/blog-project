@@ -3,7 +3,7 @@
 Blogio is an app that allows users to ......
 
 ### Contents
-[Tech Stack](###Tech Stack)
+[Tech Stack](###Techstack)
 
 # Foo
 - Installation
@@ -12,7 +12,7 @@ Blogio is an app that allows users to ......
 - Architecture Pattern
 - Unit Testing0
 
-### Tech Stack
+### Tech Stack<a name="Techstack"></a>
 
 ### Testing
 - cd frontend
