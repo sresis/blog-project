@@ -72,6 +72,7 @@ The database includes 3 tables: Users, Posts, and Favorites.
     - id: number (primary key)
     - postTitle: string
     - postContent: string
+    - createdAt: date 
     - userID: number (foreign key references User.id, Users:Posts is a 1:Many relationship)
 - Favorites
     - id: number (primary key)
