@@ -43,15 +43,28 @@ Blogio is a blog post web application.
     Upon clicking the delete button, the ID of the post to be deleted is passed to the server, where I created an endpoint that utilizes sequelize-typescript to delete the post from the database. I also implemented cascading deletes in my database, so that deleted posts are also removed from the Favorites table and do not show up in any user's favorite posts.
     <img src="./public/delete.gif">
 - Search for blogs based on title or content
+
+    <img src="./public/search.gif">
 Sequelize -> converted to lowercase
 *** future: add filtering by update date, 
 
 ### Database Design<a name="Database"></a>
 The database includes 3 tables: Users, Posts, and Favorites.
-Relationships:
-- Users:Posts is 1:Many
-- Users:Favorites is 1:Many
-- Posts:Favorites is 1:Many
+- Users
+    - id: number (primary key)
+    - username: string
+    - password: string
+- Posts
+    - id: number (primary key)
+    - postTitle: string
+    - postContent: string
+    - userID: number (foreign key references User.id, Users:Posts is a 1:Many relationship)
+- Favorites
+    - id: number (primary key)
+    - userID: number (foreign key references User.id, Users:Favorites is a 1:Many relationship)
+    - userID: number (foreign key references Post.id, Posts:Favorites is a 1:Many relationship)
+
+
 
 
 ### Testing<a name="Testing"></a>
