@@ -23,7 +23,6 @@ function SearchByTitle() {
       axios.post('http://localhost:8080/search_by_title', searchInput)
       .then((res: any) => {
           setVisiblePosts(res.data);
-          console.log(visiblePosts);
       })
       .catch((err:any) => {
           console.log(err.message, err.name)

@@ -30,9 +30,7 @@ function ViewFavorites () {
                 );
             })}
             </div>
-            
         </div>
     )
-
 }
 export default ViewFavorites

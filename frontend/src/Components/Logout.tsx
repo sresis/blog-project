@@ -6,7 +6,6 @@ function Logout () {
     console.log('frontend logout')
     axios.get('http://localhost:8080/logout')
     .then((res: any) => {
-        console.log(res);
         localStorage.setItem("token", "false"); 
         window.location.reload(true); // refresh page
   
