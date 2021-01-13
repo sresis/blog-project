@@ -33,7 +33,9 @@ The navigation bar is conditionally rendered based on the user's login status.
     <img src="./public/update.gif">
 
     - Delete a blog post
-    Upon clicking the delete button, the ID of the post to be deleted is passed to the server, where I created an endpoint that utilizes sequelize-typescript to delete the post from the database. I also implemented cascading deletions in my datbase, so that deleted posts are also removed from the Favorites table and do not show up in any user's favorite posts.
+
+    Upon clicking the delete button, the ID of the post to be deleted is passed to the server, where I created an endpoint that utilizes sequelize-typescript to delete the post from the database. I also implemented cascading deletes in my datbase, so that deleted posts are also removed from the Favorites table and do not show up in any user's favorite posts.
+    <img src="./public/delete.gif">
 - Search for blogs based on title or content
 *** future: add filtering by update date, 
 

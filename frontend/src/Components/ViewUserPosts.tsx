@@ -18,6 +18,7 @@ function ViewUserPosts () {
     
     return (
         <div>
+            <h2>Your Posts</h2>
             <div className="posts">
                 {visiblePosts &&
                 visiblePosts.map((visiblePost:any, index) => {
