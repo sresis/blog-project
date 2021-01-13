@@ -20,6 +20,9 @@ Blogio is a blog post web application.
 
 ### Features<a name="Features"></a>
 - Ability to create an account, log in, and log out.
+    - Create an account
+    
+    dffdf
 
 The navigation bar is conditionally rendered based on the user's login status. 
 <img src="./public/reg.gif">
