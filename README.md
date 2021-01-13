@@ -61,7 +61,9 @@ Users have the ability to favorite posts, as well as view the posts they have sa
 <img src="./public/favorite.gif">
 
 ### Best Practices<a name="Bestpractices"></a>
-dsfdsf
+- During the development of this project, I focused on the big picture and user experience. I created the database model and created user stories on the first day of working on the project. This helped me to organize the necessary requirements and functionalities to build the app. Focusing on the big picture was integral for developing my project with intention and focus.
+- I aimed to keep the structure of my files simple and organized. I created frontend and backend folders to organize my development. On the backend, I created a db folder, which stores the database model as well as a CRUD sub-folder, which breaks out database queries and operations based on their relevant table. My main server file references the content in these folders. This made my code cleaner than if I had created the database functions directly in my main server file. Additionally, on the front end, I created a Components folder where I stored individual React components. This project was my first time truly staying away from creating most of frontend in a single React file. This made my code a lot simpler, organized, and easy to navigate.
+- Through this project, I aimed to avoid repetitive code. The reusable components I built in React helped reduce reptition. As a developer, I am continually seeking to identify reptition and ways to refactor it. 
 
 ### Architecture Pattern<a name="Architect"></a>
 dsfsdf

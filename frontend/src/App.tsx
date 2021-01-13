@@ -16,14 +16,12 @@ import { Col, Navbar } from 'react-bootstrap';
 
 
 function Homepage() {
- 
   return (
     <div>
       <img id="homepage-pic" src="https://i.ibb.co/6m5HBRR/Welcome-to.png" alt="homepage-banner1"></img>
     </div>
   )
 }
-
 function App() {
   const [loggedIn, setLoggedIn] = useState("false");
 
@@ -36,7 +34,6 @@ function App() {
     }
     }, [loggedIn]);
   
-  console.log(loggedIn);
     const Navigation = {
       'true': (
       <Navbar id ="topbar-post">
