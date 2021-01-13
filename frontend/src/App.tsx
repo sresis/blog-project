@@ -54,8 +54,8 @@ function App() {
           <div className="dropdown">
             <div className="dropbtn">Your Account</div>
             <div className="dropdown-content">
-              <Link to="/view-user-posts">View Your Posts</Link>
-              <Link to="/view-favorites">View Your Favorites</Link>
+              <Link to="/view-user-posts">Your Posts</Link>
+              <Link to="/view-favorites">Your Favorites</Link>
             </div>
           </div>
           <Link to="/logout">Log Out</Link>

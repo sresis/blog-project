@@ -1,7 +1,9 @@
 import React, {useState } from 'react';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
-import DeleteFavorite  from './DeleteFavorite'
+import DeleteFavorite  from './DeleteFavorite';
+import { Card } from 'react-bootstrap';
+
 function ViewFavorites () {
     const [favorites, setFavorites] = useState(Array);
     React.useEffect(() => {
@@ -13,17 +15,18 @@ function ViewFavorites () {
     
     return (
         <div>
+            <h2>Favorite Posts</h2>
             <div className="favorites">
                 {favorites &&
                 favorites.map((favorite:any, index) => {
                 return (
-                <div className="post" key={favorite.id}>
+                <Card className="postCard" key={favorite.id}>
                     <h2>{favorite.Post.postTitle}</h2>
-                    <div className="details">
-                    <p>{favorite.Post.postContent}</p>
-                    <button onClick={() => DeleteFavorite(`${favorite.id}`)}>Delete Fav</button>
+                    <div className="card-text">
+                    {favorite.Post.postContent}
                     </div>
-                </div>
+                    <button onClick={() => DeleteFavorite(`${favorite.id}`)}>Delete Fav</button>
+                </Card>
                 );
             })}
             </div>

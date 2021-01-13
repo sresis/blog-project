@@ -2,6 +2,8 @@ import React, {useState } from 'react';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import CreateFavorite  from './CreateFavorite'
+import { Card } from 'react-bootstrap';
+
 function ViewPosts () {
     const [visiblePosts, setVisiblePosts] = useState(Array);
    

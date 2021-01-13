@@ -33,10 +33,7 @@ function ViewUserPosts () {
                             <button onClick={() => DeletePost(`${visiblePost.id}`)}>Delete post</button>
                             <button onClick={()=>{history.push(`/update-post/${visiblePost.id}`)}}>Update post</button>
                         </Card.Body>
-                </Card>
-
-
-            
+                    </Card>
                 );
             })}
             </div>

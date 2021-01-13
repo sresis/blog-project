@@ -17,7 +17,7 @@ body {
 
 }
 form {
-    width: 50%;
+    width: 70%;
     background-color:#c3b192;
     opacity: 0.92;
     border: 3px solid #0f1626;
@@ -75,7 +75,7 @@ display: block;
 .postCard {
     border: 3px solid #0f1626;
     border-radius: 10px;
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -86,7 +86,9 @@ display: block;
 #contentInput {
     overflow-y: auto;    
     overflow: auto;
+    height: 150px;
     width: 100%;
+
 }
 #titleInput {
     width: 90%;
