@@ -78,10 +78,14 @@ app.get('/show_posts', (req, res) => {
 // show all the posts that the user has made
 app.get('/show_user_posts', (req, res) => {
   let postData = [];
-  const userID:number = session['current']
+  const userID: number = session['current'];
+  console.log('show user posts');
+  console.log(userID);
+
   const posts = post.showUserPosts(userID).then(function (posts: Array<typeof Posts>) {
     for (const item of posts) {
       postData.push(item.dataValues);
+      console.log(item.dataValues);
     }
     res.json(postData)
   })
@@ -89,7 +93,8 @@ app.get('/show_user_posts', (req, res) => {
 // shows user's favorites
 app.get('/show_favorites', (req, res) => {
   let favoriteData = [];
-  const userID: number = session['current']
+  const userID: number = session['current'];
+  console.log(userID);
   const favorites = favorite.viewUserFavorites(userID).then(function (favorites: Array<typeof Favorites>) {
     for (const item of favorites) {
       favoriteData.push(item.dataValues);

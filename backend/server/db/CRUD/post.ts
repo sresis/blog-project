@@ -22,6 +22,8 @@ function updatePost(id: number, postContent: string) {
 }
 // show all posts made by current user
 function showUserPosts(userID: number) {
+    console.log(userID);
+    console.log('test');
     return Posts.findAll({
         where: {
             userID: userID
