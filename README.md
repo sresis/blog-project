@@ -5,6 +5,8 @@ Blogio is a blog post web application.
 ### Contents
 - [Tech Stack](#Techstack)
 - [Features](#Features)
+- [Best Practices] (#Bestpractices)
+- [Architecture Pattern] (#Architect)
 - [Database Design](#Database)
 - [Testing](#Testing)
 
@@ -20,6 +22,8 @@ Blogio is a blog post web application.
 - Database: Postgres, Sequelize-Typescript (ORM)
 - Test Suite: Jest, Enzyme
 
+This project was my first exposure to Typescript, Express/Node.js, and Sequelize-Typescript. I had a lot of fun diving into these technologies!
+
 ### Features<a name="Features"></a>
 - **Ability to create an account, log in, and log out**
     - **Create an account:**
@@ -33,7 +37,7 @@ Blogio is a blog post web application.
 
 - **CRUD Functionality**
     - **Create a new blog post**
-    
+
     In the CreatePost React component, users enter blog post title and content. Upon submission of the post form, the title and content are sent to the create_post endpoint.=, where a new record in the Posts database is created. The post can then be viewed in the user's "Your Posts" page. This page uses the ViewUserPosts React component. Upon clicking the "View Your Posts" link in the "Your Account" dropdown on the navbar, a request with the user's ID is sent to the show_user_posts endpoint in the server. This endpoint queries the database for all Posts that match the user ID (user ID is a foreign key in the Posts table).
     <img src="./public/createpost.gif">
 
@@ -56,7 +60,11 @@ Blogio is a blog post web application.
 Users have the ability to favorite posts, as well as view the posts they have saved to their favorites. As users browse the posts, they can favorite multiple posts. In future development, I would like to have the favorite button be conditionally rendered in different colors based on if the user has favorited the post. On their Favorites page, users have the ability to view their favorites as well as to remove posts from their favorites. Similar to the delete post feature, the remove favorite button sends a request to the server to delete the record of the favorite post in the DB, and this deletion is executed with sequelize. 
 <img src="./public/favorite.gif">
 
+### Best Practices<a name="Bestpractices"></a>
+dsfdsf
 
+### Architecture Pattern<a name="Architect"></a>
+dsfsdf
 ### Database Design<a name="Database"></a>
 The database includes 3 tables: Users, Posts, and Favorites.
 - Users
