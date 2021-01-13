@@ -32,6 +32,9 @@ form {
     color: #F5F5F5;
     padding-bottom: 5px;
     padding-top: 5px;
+    justify-content: flex-end;
+    text-align: right;
+
 }
 a, .dropdown {
     padding: 7px;

@@ -4,18 +4,15 @@ import { useHistory } from 'react-router-dom';
 import CreateFavorite  from './CreateFavorite'
 function ViewPosts () {
     const [visiblePosts, setVisiblePosts] = useState(Array);
-    const fetchData = () => {
-        const response = axios.get('http://localhost:8080/show_posts')
-        .then((res: any) => {
-            setVisiblePosts(res.data);   
-        })
-    }
-
+   
+    const response = axios.get('http://localhost:8080/show_posts')
+    .then((res: any) => {
+        setVisiblePosts(res.data);   
+    })
     
     return (
         <div>
             hiiii
-            <button onClick={fetchData}>view it</button>
             <div className="posts">
                 {visiblePosts &&
                 visiblePosts.map((visiblePost:any, index) => {

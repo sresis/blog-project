@@ -7,15 +7,17 @@ import UpdatePost  from './UpdatePost'
 function ViewUserPosts () {
     const [visiblePosts, setVisiblePosts] = useState(Array);
     const history = useHistory();
-    const fetchData = () => {
-        const response = axios.get('http://localhost:8080/show_user_posts')
-        .then((res: any) => {
-            setVisiblePosts(res.data);   
+
+    React.useEffect(() => {
+        const response = axios.get('http://localhost:8080/show_posts')
+        .then((res:any) => {
+            setVisiblePosts(res.data);
         })
-    }
+
+    }, [visiblePosts])
+    
     return (
         <div>
-            <button onClick={fetchData}>view it</button>
             <div className="posts">
                 {visiblePosts &&
                 visiblePosts.map((visiblePost:any, index) => {

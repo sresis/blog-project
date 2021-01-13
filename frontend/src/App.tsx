@@ -31,7 +31,6 @@ function App() {
   React.useEffect(() => {
     if (localStorage.getItem("token") === "true") {
       setLoggedIn('true');
-
     }
     }, [loggedIn]);
   

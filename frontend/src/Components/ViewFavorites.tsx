@@ -4,15 +4,13 @@ import { useHistory } from 'react-router-dom';
 import DeleteFavorite  from './DeleteFavorite'
 function ViewFavorites () {
     const [favorites, setFavorites] = useState(Array);
-    const fetchData = () => {
         const response = axios.get('http://localhost:8080/show_favorites')
         .then((res: any) => {
             setFavorites(res.data);
         })
-    }
+    
     return (
         <div>
-            <button onClick={fetchData}>view it</button>
             <div className="favorites">
                 {favorites &&
                 favorites.map((favorite:any, index) => {
