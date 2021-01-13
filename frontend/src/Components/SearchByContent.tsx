@@ -47,7 +47,6 @@ function SearchByContent() {
             <div className="posts">
                 {visiblePosts &&
                 visiblePosts.map((visiblePost:any, index) => {
-                    console.log(visiblePost);
                 return (
                 <Card className="postCard" key={index}>
                     <Card.Body>
