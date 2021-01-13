@@ -1,6 +1,6 @@
 # Blogio
 
-Blogio is an app that allows users to ......
+Blogio is a blog post web application.
 
 ### Contents
 - [Tech Stack](#Techstack)
@@ -20,10 +20,14 @@ Blogio is an app that allows users to ......
 
 ### Features<a name="Features"></a>
 - Ability to create an account, log in, and log out.
+
 The navigation bar is conditionally rendered based on the user's login status. 
 <img src="./public/reg.gif">
+
 - CRUD Functionality
     - Create a new blog post
+    <img src="./public/createpost.gif">
+
     - Read a blog post
     - Update a blog post
     - Delete a blog post
