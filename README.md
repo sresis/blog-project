@@ -5,8 +5,9 @@ Blogio is a blog post web application.
 ### Contents
 - [Tech Stack](#Techstack)
 - [Features](#Features)
+- [Database Design](#Database)
 - [Testing](#Testing)
-- Database Design (#Database)
+
 
 - Installation
 - Features
@@ -42,11 +43,14 @@ Blogio is a blog post web application.
 
     Upon clicking the delete button, the ID of the post to be deleted is passed to the server, where I created an endpoint that utilizes sequelize-typescript to delete the post from the database. I also implemented cascading deletes in my database, so that deleted posts are also removed from the Favorites table and do not show up in any user's favorite posts.
     <img src="./public/delete.gif">
-- Search for blogs based on title or content
-
+- **Search for blogs based on title or content**
+    I created SearchByTitle and SearchByContent components in React that render a search form. Upon submitting the search form, the search string is sent to the server, to search_by_title and search_by_content endpoints. These endpoints execute a sequelize query that converts the search term to lowercase and returns all Posts that include the search term. The matching posts are sent back to the client and are rendered with React cards. 
+    
+    In future development of Blogio, I plan to combine these search features onto one form, with users having the option to search by one or both of these fields. Additionally, with my current data model it is also feasible to implement search posts by post date or by username.   
     <img src="./public/search.gif">
 Sequelize -> converted to lowercase
 *** future: add filtering by update date, 
+- **Favorite Posts:**
 
 ### Database Design<a name="Database"></a>
 The database includes 3 tables: Users, Posts, and Favorites.
@@ -68,7 +72,7 @@ The database includes 3 tables: Users, Posts, and Favorites.
 
 
 ### Testing<a name="Testing"></a>
-I implemented frontend unit tests using Jest and Enzyme.
+I implemented frontend unit tests using Jest and Enzyme. I plan to expand my test coverage as well as add backend tests in the future.
 
 To run the test suite from the frontend folder, run
 ```
