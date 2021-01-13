@@ -40,6 +40,7 @@ function SearchByTitle() {
                 <input
                     type='text'
                     name='title'
+                    id='title'
                     value={searchInput.title}
                     onChange={handleInput} 
                 />
