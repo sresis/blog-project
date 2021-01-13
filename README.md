@@ -10,12 +10,6 @@ Blogio is a blog post web application.
 - [Database Design](#Database)
 - [Testing](#Testing)
 
-
-- Installation
-- Features
-- Demo Video
-- Architecture Pattern
-
 ### Tech Stack<a name="Techstack"></a>
 - Frontend: TypeScript, React
 - Backend: TypeScript, Express, Node.js
