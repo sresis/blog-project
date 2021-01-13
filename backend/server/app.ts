@@ -103,6 +103,16 @@ app.post('/create_favorite/:id', (req: any, res: express.Response) => {
   favorite.createFavorite(userID, req.params['id'])    
   res.json({ message: 'success.' });
 })
+// returns info on post
+app.get('/get_post_info/:id', (req: express.Request, res: express.Response) => {
+  const postData = []
+  const info = post.getPostInfo(req.params['id']).then(function (info: Array<typeof Posts>) {
+    for (const item of info) {
+      postData.push(item.dataValues);
+    }
+  res.json(postData);
+})
+})
 // deletes a post
 app.post('/delete_post/:id', (req: any, res: express.Response) => {
   post.deletePost(req.params['id'])
@@ -138,9 +148,11 @@ app.get('/send_login', (req: express.Request, res: express.Response) => {
 })
 
 app.post('/update_post/:id', (req: express.Request, res: express.Response)=> {
-  const {postContent} = req.body
-  console.log(postContent);
-  post.updatePost(req.params['id'], postContent)
+  const {content} = req.body;
+  console.log(req);
+  console.log('update backend');
+  console.log(content);
+  post.updatePost(req.params['id'], content)
   res.json({'message': 'success'})
 })
 

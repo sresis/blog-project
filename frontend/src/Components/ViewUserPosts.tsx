@@ -9,11 +9,10 @@ function ViewUserPosts () {
     const history = useHistory();
 
     React.useEffect(() => {
-        const response = axios.get('http://localhost:8080/show_posts')
+        axios.get('http://localhost:8080/show_posts')
         .then((res:any) => {
             setVisiblePosts(res.data);
         })
-
     }, [visiblePosts])
     
     return (

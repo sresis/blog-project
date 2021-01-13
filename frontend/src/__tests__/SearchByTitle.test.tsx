@@ -13,7 +13,5 @@ configure({adapter: new Adapter()});
         expect(wrapper.find('form')).toHaveLength(1);
         expect(wrapper.find('input')).toHaveLength(1);
         expect(wrapper.find('input#title')).toHaveLength(1);
-
-
     });
   });

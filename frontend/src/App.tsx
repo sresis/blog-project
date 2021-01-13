@@ -32,6 +32,9 @@ function App() {
     if (localStorage.getItem("token") === "true") {
       setLoggedIn('true');
     }
+    else {
+      setLoggedIn('false');
+    }
     }, [loggedIn]);
   
   console.log(loggedIn);

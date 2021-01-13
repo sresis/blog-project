@@ -14,13 +14,13 @@ function createPost(postTitle: string, postContent: string, postDate: string, us
 }
 // update the post content
 function updatePost(id: number, postContent: string) {
+    console.log('xxx');
+    console.log(id);
+    console.log(postContent);
     Posts.update(
         {postContent: postContent},
         {returning: true, where: {id: id} }
       )
-     
-
-
 }
 // show all posts made by current user
 function showUserPosts(userID: number) {
@@ -29,6 +29,15 @@ function showUserPosts(userID: number) {
             userID: userID
         },
         order: [['id', 'DESC']],
+    })
+}
+// get post info
+function getPostInfo(id: number) {
+    return Posts.findAll({
+        where: {
+            id: id
+        },
+        attributes: ['postTitle', 'postContent', 'postDate', 'userID', 'id']
     })
 }
 // show all posts containing search term in title
@@ -57,4 +66,4 @@ function showAllPosts() {
       })
 
 }
-export { createPost, updatePost, showAllPosts, showUserPosts, deletePost, searchPostTitle }
+export { createPost, updatePost, showAllPosts, showUserPosts, deletePost, searchPostTitle, getPostInfo }

@@ -1,35 +1,33 @@
 import axios from 'axios'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 
 function UpdatePost (id:any) {
     const idInput:number = id.match.params['id']
     const history = useHistory();
-
-    const initialInputs = {
-        postContent: ''
-      }
-    const [postInput, setPostInput] = useState<{postContent: string;}>(initialInputs)
-    const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setPostInput({
-          ...postInput,
-          [event.currentTarget.name]: event.currentTarget.value
-    
+    // get post info
+    const [content, setContent] = useState('');
+    useEffect(() => {
+        axios.get(`http://localhost:8080/get_post_info/` + idInput)
+        .then((res:any) => {
+            setContent(res.data[0].postContent);
         })
+    }, [])
+    const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        event.preventDefault();
+        setContent(
+            event.currentTarget.value
+        )
       }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(postInput);
-  
-        axios.post(`http://localhost:8080/update_post/` + idInput, postInput)
+        event.preventDefault(); 
+        axios.post(`http://localhost:8080/update_post/` + idInput, {'content': content})
         .then((res: any) => {
             history.push('/view-user-posts');
-
         })
         .catch((err:any) => {
             console.log(err.message, err.name)
         })
-        // reset
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -40,7 +38,7 @@ function UpdatePost (id:any) {
                 name='postContent'
                 id="contentInput"
                 className="scrollabletextbox"
-                value={postInput.postContent}
+                value={content}
                 onChange={handleInput} 
             />
             </label>

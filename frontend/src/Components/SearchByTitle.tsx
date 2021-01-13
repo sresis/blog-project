@@ -18,7 +18,6 @@ function SearchByTitle() {
         [event.currentTarget.name]: event.currentTarget.value
       })
     }
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       axios.post('http://localhost:8080/search_by_title', searchInput)
@@ -31,8 +30,6 @@ function SearchByTitle() {
       })
       setSearchInput(initialInputs)
     }
-
-    
     return (
         <div>
             <form onSubmit={handleSubmit}>
