@@ -37,7 +37,7 @@ This project was my first exposure to Typescript, Express/Node.js, and Sequelize
 
     - **Read and update blog posts**
 
-    Users have the ability to read and update their blog posts. Through the UpdatePosts component, users can edit their post content. Through onSubmit in the update form, the updated content (and corresponding post ID) is sent to the update_post endpoint. This endpoint using a sequelize function to update the postContent stored in the DB for the selected post.
+    Users have the ability to read and update their blog posts. Through the UpdatePosts component, users can edit their post content. Through an onSubmit event in the update form, the updated content (and corresponding post ID) is sent to the update_post endpoint. This endpoint using a sequelize function to update the postContent stored in the DB for the selected post.
     <img src="./public/update.gif">
 
     - **Delete a blog post**
