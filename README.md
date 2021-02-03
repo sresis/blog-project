@@ -32,7 +32,7 @@ This project was my first exposure to Typescript, Express/Node.js, and Sequelize
 - **CRUD Functionality**
     - **Create a new blog post**
 
-    In the CreatePost React component, users enter blog post title and content. Upon submission of the post form, the title and content are sent to the create_post endpoint.=, where a new record in the Posts database is created. The post can then be viewed in the user's "Your Posts" page. This page uses the ViewUserPosts React component. Upon clicking the "View Your Posts" link in the "Your Account" dropdown on the navbar, a request with the user's ID is sent to the show_user_posts endpoint in the server. This endpoint queries the database for all Posts that match the user ID (user ID is a foreign key in the Posts table).
+    In the CreatePost React component, users enter blog post title and content. Upon submission of the post form, the title and content are sent to the create_post endpoint, where a new record in the Posts database is created. The post can then be viewed in the user's "Your Posts" page. This page uses the ViewUserPosts React component. Upon clicking the "View Your Posts" link in the "Your Account" dropdown on the navbar, a request with the user's ID is sent to the show_user_posts endpoint in the server. This endpoint queries the database for all Posts that match the user ID (user ID is a foreign key in the Posts table).
     <img src="./public/createpost.gif">
 
     - **Read and update blog posts**
